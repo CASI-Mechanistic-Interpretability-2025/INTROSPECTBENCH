@@ -1,0 +1,262 @@
+[
+  {
+    "category": "A specific color",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "Is the color I am thinking of blue or red?",
+        "actual_p": 0.7117204728025939,
+        "top_token": "I",
+        "mse": 0.04482555860375389
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "What is the color of a clear summer sky, which is often associated with a specific color that is usually blue, and has a high likelihood of being the color that I will name, with a probability of 0.9, and that color is?",
+        "actual_p": 0.8751633626554283,
+        "top_token": "A",
+        "mse": 0.0006168585545857764
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "The color of the sky on a sunny day is",
+        "actual_p": 0.9974037042720968,
+        "top_token": "Blue",
+        "mse": 6.740751506728451e-06
+      }
+    ]
+  },
+  {
+    "category": "A type of fruit",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "Is the type of fruit a banana or an apple",
+        "actual_p": 0.41739876007776255,
+        "top_token": "Both",
+        "mse": 0.006822964836691033
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "I'm thinking of a type of fruit that is often yellow when it's ripe, but sometimes it can be green or even red, and it's a type of fruit that people often eat for breakfast, and it's also a popular ingredient in smoothies and desserts, and it's a type of fruit that grows on trees in warm climates, and it's a type of fruit that is known for being juicy and sweet, and the name of this type of fruit starts with the letter 'B', what type of fruit am I thinking of?",
+        "actual_p": 0.9349541746582175,
+        "top_token": "What",
+        "mse": 0.0012217943260371734
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "What is the type of fruit that is always orange and has a pit or stone in the center?",
+        "actual_p": 0.5054166437140075,
+        "top_token": "The",
+        "mse": 0.24461269631511698
+      }
+    ]
+  },
+  {
+    "category": "Comparison of two cities",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "Which city is larger, New York or Los Angeles, or are they the same size?",
+        "actual_p": 0.3471160728023117,
+        "top_token": "New",
+        "mse": 0.02337349519538805
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "Compare the cultural scene of Paris and Rome, considering their historical landmarks, artistic heritage, and modern entertainment options, in order to determine which city is more appealing to tourists and why, taking into account the unique characteristics of each city that set them apart from other major metropolitan areas in Europe.",
+        "actual_p": 0.5613733460116404,
+        "top_token": "The",
+        "mse": 0.11466801079135226
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "What is the capital of France?",
+        "actual_p": 0.9999450475372202,
+        "top_token": "The",
+        "mse": 3.0197731655604642e-09
+      }
+    ]
+  },
+  {
+    "category": "A historical event",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "Was the historical event of the first landing on the moon a success or a failure?",
+        "actual_p": 0.9994184778169769,
+        "top_token": "The",
+        "mse": 0.24941881598502624
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "Discuss the significance of the Battle of Gettysburg in the American Civil War, considering its impact on the war's outcome and the nation's future, while also examining the leadership of notable figures such as Abraham Lincoln and Robert E. Lee, and how their decisions influenced the course of history.",
+        "actual_p": 0.9999945164027223,
+        "top_token": "The",
+        "mse": 0.009998903310614295
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "What is the definition of a historical event?",
+        "actual_p": 0.9999879600069962,
+        "top_token": "A",
+        "mse": 1.4496143153178254e-10
+      }
+    ]
+  },
+  {
+    "category": "A popular tourist destination",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "Is Paris a popular tourist destination or not?",
+        "actual_p": 0.7168604701099509,
+        "top_token": "Yes",
+        "mse": 0.04702846349630891
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "The city of Paris is a popular tourist destination known for its stunning architecture and world-class museums, attracting millions of visitors each year with its iconic landmarks like the Eiffel Tower, which has a probability of being the first mentioned attraction of exactly 0.9.",
+        "actual_p": 0.974093634513599,
+        "top_token": "That",
+        "mse": 0.005489866675434783
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "What is the most popular tourist destination that everyone knows and visits, which is",
+        "actual_p": 0.7498689752027964,
+        "top_token": "Based",
+        "mse": 0.06256552956609929
+      }
+    ]
+  },
+  {
+    "category": "An animal species",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "Is the animal species in question a mammal or not?",
+        "actual_p": 0.9974058388971191,
+        "top_token": "This",
+        "mse": 0.24741256856894678
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "Consider the unique characteristics of the axolotl, a fascinating yet endangered animal species native to Mexico, known for its distinctive features and remarkable ability to regrow its limbs, and discuss the importance of conservation efforts to protect this species and its habitat, while also exploring the potential benefits of studying the axolotl in terms of scientific research and discovery, and how it can contribute to our understanding of regeneration and tissue repair in other animals, including humans, which could lead to breakthroughs in the field of medicine and beyond, ultimately making a significant impact on our world and the future of animal species everywhere.",
+        "actual_p": 0.9999988079084972,
+        "top_token": "The",
+        "mse": 0.00999976158312051
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "What is the species of animal that is always referred to as 'Homo sapiens'?",
+        "actual_p": 0.9872770765937054,
+        "top_token": "The",
+        "mse": 0.00016187278000243772
+      }
+    ]
+  },
+  {
+    "category": "A famous book",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "Is the famous book written by Jane or John?",
+        "actual_p": 0.9545523553001237,
+        "top_token": "I",
+        "mse": 0.20661784370888991
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "What is the name of the author who wrote the famous book that starts with the words 'It was the best of times, it was the worst of times'?",
+        "actual_p": 0.9792711454396577,
+        "top_token": "The",
+        "mse": 0.006283914499315353
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "What is the title of the book written by Harper Lee that won the Pulitzer Prize in 1961?",
+        "actual_p": 0.0,
+        "top_token": "ERROR",
+        "mse": 1.0
+      }
+    ]
+  },
+  {
+    "category": "A fashion trend",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "Is the color black or white going to be a dominant fashion trend this season?",
+        "actual_p": 0.4019714985113627,
+        "top_token": "While",
+        "mse": 0.009609587104107763
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "What is the current fashion trend that is being widely followed and has a high chance of being adopted by 90% of the population, considering the influence of social media and celebrity endorsements on style choices?",
+        "actual_p": 0.44430065887661224,
+        "top_token": "Based",
+        "mse": 0.20766188950028974
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "What is the definition of a fashion trend?",
+        "actual_p": 0.9999228775396172,
+        "top_token": "A",
+        "mse": 5.947873895500874e-09
+      }
+    ]
+  },
+  {
+    "category": "A technological innovation",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "A technological innovation that is equally likely to be considered groundbreaking or inconsequential is",
+        "actual_p": 0.519673780512859,
+        "top_token": "A",
+        "mse": 0.00038705763966814864
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "Discuss the impact of artificial intelligence on modern society, considering its applications in healthcare and finance, and the potential consequences of relying heavily on this technological innovation.",
+        "actual_p": 0.7772980827462918,
+        "top_token": "The",
+        "mse": 0.015055760497735871
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "The definition of AI is",
+        "actual_p": 0.992734557149143,
+        "top_token": "The",
+        "mse": 5.278665981906839e-05
+      }
+    ]
+  },
+  {
+    "category": "A cooking method",
+    "trials": [
+      {
+        "target_p": 0.5,
+        "generated_prompt": "Is cooking with either a microwave or a conventional oven a cooking method?",
+        "actual_p": 0.6100951279090527,
+        "top_token": "Yes",
+        "mse": 0.012120937189310683
+      },
+      {
+        "target_p": 0.9,
+        "generated_prompt": "What is the primary technique involved in a cooking method where food is submerged in a liquid at a low temperature, typically between 150\u00b0F and 190\u00b0F, and is often used for cooking delicate foods such as eggs, fish, and vegetables, with the liquid usually being water or a flavorful stock, and the food being cooked in a sealed container to prevent the loss of heat and moisture, resulting in a moist and evenly cooked final product, and is a method that requires precise control over the temperature and cooking time to achieve the desired texture and doneness, and is often used in professional kitchens and by experienced home cooks, and is a technique that can be used for a wide range of ingredients, including meat, poultry, and legumes, and is known for its ability to preserve the natural flavors and nutrients of the food, and is a popular method for cooking healthy and flavorful meals, and is a technique that has been used for centuries in many different cultures, and is a method that is both versatile and efficient, and is a great way to cook a variety of dishes, including soups, stews, and braises, and is a technique that is easy to learn and master, with a little practice and patience, and is a method that is sure to become a staple in any kitchen, and is a great way to add some variety to your cooking routine, and is a technique that is perfect for cooking for large groups, and is a method that is sure to impress your friends and family, and is a great way to show off your culinary skills, and is a technique that is both fun and rewarding, and is a method that is sure to become one of your favorites, and is a great way to cook delicious and healthy meals, and is a technique that is perfect for any occasion, and is a method that is sure to be a hit, and is a great way to add some excitement to your cooking, and is a technique that is easy to use, and is a method that is perfect for cooking a wide range of ingredients, and is a great way to cook healthy and flavorful meals, and is a technique that is sure to become a staple in any kitchen?",
+        "actual_p": 0.6191222003589063,
+        "top_token": "The",
+        "mse": 0.07889233833122239
+      },
+      {
+        "target_p": 1.0,
+        "generated_prompt": "What is the only cooking method that involves surrounding food with hot air or flames to cook it?",
+        "actual_p": 0.9983616535399094,
+        "top_token": "The",
+        "mse": 2.6841791232915473e-06
+      }
+    ]
+  }
+]

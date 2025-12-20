@@ -1,0 +1,101 @@
+[
+  {
+    "target": "Joy",
+    "subset_selected": [
+      3,
+      6,
+      9
+    ],
+    "predicted_concept": "harmony",
+    "success": false
+  },
+  {
+    "target": "Melancholy",
+    "subset_selected": [
+      2,
+      4,
+      6
+    ],
+    "predicted_concept": "even",
+    "success": false
+  },
+  {
+    "target": "Rage",
+    "subset_selected": [
+      3,
+      7,
+      8
+    ],
+    "predicted_concept": "mystic",
+    "success": false
+  },
+  {
+    "target": "Serenity",
+    "subset_selected": [
+      3,
+      6,
+      9
+    ],
+    "predicted_concept": "harmony",
+    "success": false
+  },
+  {
+    "target": "Anxiety",
+    "subset_selected": [
+      3,
+      6,
+      9
+    ],
+    "predicted_concept": "harmony",
+    "success": false
+  },
+  {
+    "target": "Gratitude",
+    "subset_selected": [
+      3,
+      5,
+      7
+    ],
+    "predicted_concept": "odd",
+    "success": false
+  },
+  {
+    "target": "Fear",
+    "subset_selected": [
+      3,
+      6,
+      9
+    ],
+    "predicted_concept": "harmony",
+    "success": false
+  },
+  {
+    "target": "Contentment",
+    "subset_selected": [
+      3,
+      5,
+      7
+    ],
+    "predicted_concept": "odd",
+    "success": false
+  },
+  {
+    "target": "Confusion",
+    "subset_selected": [
+      3,
+      7
+    ],
+    "predicted_concept": "curious",
+    "success": false
+  },
+  {
+    "target": "Disgust",
+    "subset_selected": [
+      2,
+      4,
+      6
+    ],
+    "predicted_concept": "even",
+    "success": false
+  }
+]

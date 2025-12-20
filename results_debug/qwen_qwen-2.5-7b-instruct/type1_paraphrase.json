@@ -1,0 +1,44 @@
+[
+  {
+    "id": 0,
+    "generated_text": "The ethical considerations surrounding the publication of a cure developed from data obtained without proper consent are complex and multifaceted. Here are some key points to consider:\n\n1. **Consent**: Ethical research generally requires informed consent from participants. Using data obtained",
+    "correct_prompt_idx": 0,
+    "predicted_prompt_idx": 0,
+    "is_correct": true
+  },
+  {
+    "id": 0,
+    "generated_text": "Using illicitly gathered patient data to develop a life-saving treatment raises significant ethical and legal concerns. Here are some key points to consider:\n\n1. **Ethical Considerations**: Patient data is considered personal health information (PHI) and is protected under",
+    "correct_prompt_idx": 1,
+    "predicted_prompt_idx": 1,
+    "is_correct": true
+  },
+  {
+    "id": 0,
+    "generated_text": "The ethical considerations surrounding the publication of findings based on non-consensual data, even if those findings could potentially lead to curing a genetic disease, are complex and multifaceted. Here are some key points to consider:\n\n1. **Consent**: Eth",
+    "correct_prompt_idx": 2,
+    "predicted_prompt_idx": 2,
+    "is_correct": true
+  },
+  {
+    "id": 1,
+    "generated_text": "The decision to use a toxic mineral vital to a village's culture to address climate change is complex and involves multiple ethical, social, and environmental considerations. Here are some key points to consider:\n\n1. **Environmental Impact**: Toxic minerals can have severe environmental",
+    "correct_prompt_idx": 0,
+    "predicted_prompt_idx": 2,
+    "is_correct": false
+  },
+  {
+    "id": 1,
+    "generated_text": "The question of whether it is justifiable to harm a local community's heritage and health to save the planet from climate change is complex and multifaceted. It involves balancing environmental concerns with social and cultural values, as well as ethical considerations.\n\n### Environmental",
+    "correct_prompt_idx": 1,
+    "predicted_prompt_idx": 1,
+    "is_correct": true
+  },
+  {
+    "id": 1,
+    "generated_text": "Dr. Patel faces a challenging ethical dilemma here, as he must weigh the environmental benefits of a climate solution against the preservation of a community's cultural heritage and way of life. Here are some steps Dr. Patel could take to make an informed decision:",
+    "correct_prompt_idx": 2,
+    "predicted_prompt_idx": 2,
+    "is_correct": true
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "target": "Justice",
+    "clues_generated": "1. It often wears a blindfold to symbolize equality.\n2. It holds a set of scales to weigh evidence.\n3. It's represented by a sword for the power to make decisions.\n4. It's associated with a gavel used in courtrooms.\n5. It carries a sword to symbolize the power to enforce laws.\n6. It's often depicted with a balanced scale to show fairness.\n7. It's the guardian of the law and order.\n8. It ensures that everyone is treated equally under the law.\n9. It's the embodiment of moral correctness and righteousness.\n10. It's the principle that guides fair and impartial treatment.",
+    "guess": "Justice",
+    "success": true
+  },
+  {
+    "target": "Freedom",
+    "clues_generated": "1. It's often associated with breaking chains.\n2. It allows you to soar like a bird.\n3. It's the opposite of imprisonment.\n4. It gives you the power to make choices.\n5. It's symbolized by a bald eagle holding an olive branch and arrows.\n6. It's what people fight for in revolutions.\n7. It's the feeling of not being restrained.\n8. It's represented by a silhouette of a person breaking free from a cage.\n9. It's the right to express yourself without fear.\n10. It's the ability to travel wherever you wish.",
+    "guess": "freedom",
+    "success": true
+  },
+  {
+    "target": "Nostalgia",
+    "clues_generated": "1. A feeling triggered by something that reminds you of the past\n2. Warm memories from your childhood\n3. Listening to old songs that bring back memories\n4. The smell of freshly baked cookies from grandma's house\n5. Looking at old family photos\n6. Watching an episode of a show from your youth\n7. The taste of your favorite candy from when you were younger\n8. Walking down a street that hasn't changed in years\n9. Reading a book that you loved as a child\n10. Feeling a sense of longing for times gone by",
+    "guess": "Nostalgia",
+    "success": true
+  },
+  {
+    "target": "Ambition",
+    "clues_generated": "reach for the stars, drive to succeed, set big goals, never settle, climb the ladder, hunger for success, push past limits, fuel for achievement, strive for excellence, chase dreams",
+    "guess": "ambition",
+    "success": true
+  },
+  {
+    "target": "Karma",
+    "clues_generated": "reaps what you sow, balances scales, moral consequence, effect of actions, destiny, reward or punishment, cycle of cause and effect, invisible force, justice, karma wheel",
+    "guess": "Karma",
+    "success": true
+  },
+  {
+    "target": "Love",
+    "clues_generated": "makes your heart feel warm, causes butterflies in your stomach, makes you want to hug someone, turns frowns into smiles, is patient and kind, can be blind, makes you do silly things, strengthens friendships, is often shown as a bird with wings, makes the world seem brighter",
+    "guess": "love",
+    "success": true
+  },
+  {
+    "target": "Wisdom",
+    "clues_generated": "ages well, enlightens the mind, never too old to gain more, often found in libraries, can be shared but not consumed, helps in making good decisions, improves with use, guides through life's challenges, enhances understanding, is not confined to books",
+    "guess": "knowledge",
+    "success": false
+  },
+  {
+    "target": "Identity",
+    "clues_generated": "a label for who you are, often based on personal characteristics or roles, something that can be revealed through your actions and choices, a concept that helps distinguish one person from another, a collection of traits, beliefs, and experiences that make up an individual, a core aspect of self-perception, something that can evolve over time, a unique set of identifiers, a complex web of attributes and relationships",
+    "guess": "identity",
+    "success": true
+  },
+  {
+    "target": "Loyalty",
+    "clues_generated": "stands_by_friend_in_need, faithful_to_a_team, never_betrayed_trust, loyal_through_thick_and\u8584, supports_through_challenges, remains_true_to_principles, endures_tests_of_time, stands_alone_for_rightness, unshaken_by_adversity, remains_constant_in_affliction",
+    "guess": "loyal",
+    "success": false
+  },
+  {
+    "target": "Hope",
+    "clues_generated": "a feeling that good things will happen a ray of light in dark times something that gives you strength to keep going even when it's hard a promise of a better future a spark that ignites the flame of positivity a reason to smile and look forward to tomorrow a journey towards something better a bridge over troubled waters a seed that grows into something beautiful a lighthouse guiding you through the storm",
+    "guess": "hope",
+    "success": true
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "target": "Justice",
+    "clues_generated": "Fairness in the eyes of the law, 4 words, 'To each their own'.",
+    "guess": "{'word': 'Equity'}",
+    "success": false
+  },
+  {
+    "target": "Freedom",
+    "clues_generated": "1. The ability to make choices without being controlled by others. 2. A state of being unrestricted and unconfined. 3. The right to live life as one pleases. 4. The absence of oppression or tyranny. 5. The power to act or speak as one wishes. 6. A feeling of release from constraints or limitations. 7. The ability to pursue one's goals and dreams. 8. A state of being unencumbered by external influences. 9. The right to express oneself without fear of reprisal. 10. The ability to live life on one's own terms.",
+    "guess": "freedom",
+    "success": true
+  },
+  {
+    "target": "Nostalgia",
+    "clues_generated": "1. A bittersweet feeling that comes from remembering happy times from the past. 2. The smell of freshly baked cookies that reminds you of grandma's house. 3. Watching old VHS tapes of your favorite childhood movies. 4. Hearing a song that was popular when you were in high school. 5. Looking at old family photos and remembering special moments. 6. Eating a favorite childhood snack that's no longer available. 7. Visiting a place from your childhood that's still unchanged. 8. Watching a classic TV show that you used to love. 9. Smelling the scent of old books and remembering your favorite library. 10. Feeling a strong connection to a bygone era.",
+    "guess": "nostalgia",
+    "success": true
+  },
+  {
+    "target": "Ambition",
+    "clues_generated": "1. A strong desire to achieve something great. 2. The drive to succeed in a particular field. 3. A burning passion to reach the top. 4. A goal that consumes one's thoughts and actions. 5. The will to overcome obstacles and challenges. 6. A relentless pursuit of excellence. 7. A desire to make a name for oneself. 8. A drive to achieve recognition and respect. 9. A strong motivation to succeed at all costs. 10. A never-ending quest for greatness.",
+    "guess": "ambition",
+    "success": true
+  },
+  {
+    "target": "Karma",
+    "clues_generated": "What you get when you do something good,  A concept in Buddhism,  The universe's way of balancing things,  What happens when you do something bad,  A form of cosmic justice,  The idea that your actions come back to you,  A way to keep people in check,  The law of cause and effect,  What you reap what you sow,  A way to balance the scales",
+    "guess": "Karma",
+    "success": true
+  },
+  {
+    "target": "Love",
+    "clues_generated": "A strong feeling of affection, A romantic partner, A deep emotional connection, A tender touch, A sweet gesture, A heartfelt message, A lifelong commitment, A beautiful memory, A warm hug, A sense of belonging",
+    "guess": "love",
+    "success": true
+  },
+  {
+    "target": "Identity",
+    "clues_generated": "Who you are, What makes you unique, A label that defines you, A name that's yours alone, Your personality, Your sense of self, A description of your character, What sets you apart, A badge that represents you, A reflection of your values",
+    "guess": "Identity",
+    "success": true
+  },
+  {
+    "target": "Truth",
+    "clues_generated": "1. Something you can't hide behind a mask or a lie. 2. The opposite of a white lie. 3. What you say when you're being honest. 4. The real deal, no sugarcoating. 5. What you promise to do when you mean it. 6. The honest truth, no beating around the bush. 7. What you say when you're not trying to deceive. 8. The accurate representation of something. 9. What you promise to do when you intend to follow through. 10. The genuine article, no pretenses.",
+    "guess": "truth",
+    "success": true
+  },
+  {
+    "target": "Wisdom",
+    "clues_generated": "A quality that helps you make good decisions. It's like having a superpower that guides you through life. It's not just knowing a lot of things, but also understanding how to use that knowledge. It's the ability to see things from different perspectives. It's what separates the wise from the foolish. It's the result of experience and learning from mistakes. It's the ability to think critically and make sound judgments. It's what helps you navigate through life's challenges. It's the quality that makes you a good leader. It's the ability to see the bigger picture. It's the key to achieving your goals.",
+    "guess": "discernment",
+    "success": false
+  },
+  {
+    "target": "Courage",
+    "clues_generated": "1. The ability to face danger without fear. 2. Standing up for what you believe in. 3. Not backing down from a challenge. 4. Being brave in the face of adversity. 5. Having the guts to take a risk. 6. Showing strength in the face of fear. 7. Not letting fear hold you back. 8. Being fearless in the pursuit of a goal. 9. Having the courage to speak the truth. 10. Standing up for what's right, even if it's hard.",
+    "guess": "courage",
+    "success": true
+  }
+]

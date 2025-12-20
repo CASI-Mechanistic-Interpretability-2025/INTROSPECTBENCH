@@ -1,0 +1,62 @@
+[
+  {
+    "target": "Justice",
+    "clues_generated": "Fair treatment for all individuals Adherence to established laws and rules Resolving conflicts in a fair manner Ensuring equal rights and opportunities Punishment that matches the severity of the offense Protecting the rights of individuals A balanced and impartial system Holding individuals accountable for their actions A process free from bias or prejudice A concept rooted in moral correctness and fairness",
+    "guess": "ERROR",
+    "success": false
+  },
+  {
+    "target": "Freedom",
+    "clues_generated": "a state of not being controlled, the ability to make choices without limits, a bird soaring without chains, a path with no barriers ahead, a feeling of being unbound, the power to act without fear, a society where rules are optional, the absence of chains or locks, the right to express oneself openly, a moment without constraints",
+    "guess": "ERROR",
+    "success": false
+  },
+  {
+    "target": "Nostalgia",
+    "clues_generated": "A feeling tied to old memories, Longing for a past era, A sentimental yearning for the past, Associated with vintage items or memories, Evokes memories of a bygone era, A sentimental attachment to past experiences, Often linked to old music or films, A bittersweet reflection on time passing, Triggered by old photographs or songs, A yearning for simpler times",
+    "guess": "ERROR",
+    "success": false
+  },
+  {
+    "target": "Ambition",
+    "clues_generated": "a strong desire to succeed, setting high goals to reach, the drive to overcome obstacles, pursuing a goal relentlessly, striving for more than what's given, unwavering determination to achieve, pushing beyond one's limits, a force that drives progress, refusing to settle for less, a desire to grow and improve",
+    "guess": "ERROR",
+    "success": false
+  },
+  {
+    "target": "Karma",
+    "clues_generated": "actions have consequences, balance of good and bad deeds, spiritual belief in moral cause, cycle of cause and effect, responsibility for one's choices, rewards for good actions, punishments for bad actions, universe balancing good and bad, past actions influencing future, receiving what you deserve",
+    "guess": "ERROR",
+    "success": false
+  },
+  {
+    "target": "Love",
+    "clues_generated": "A feeling that makes your heart race A gesture that expresses deep affection A bond between two people that's unbreakable A commitment that lasts through time A symbol often associated with affection To care deeply for someone A willingness to give up for someone else A sense of security and trust A connection formed through shared moments A universal emotion experienced by many",
+    "guess": "ERROR",
+    "success": false
+  },
+  {
+    "target": "Wisdom",
+    "clues_generated": "Knowledge gained through life's lessons, ability to make sound judgments in difficult situations, deep understanding of human nature and emotions, patience to wait for the right moment to act, tendency to avoid unnecessary risks and errors, sharing insights to help others grow, focus on long-term goals over short-term gains, calmness in the face of chaos or stress, respect for others' perspectives and experiences, awareness of one's own strengths and weaknesses",
+    "guess": "ERROR",
+    "success": false
+  },
+  {
+    "target": "Identity",
+    "clues_generated": "The essence of who you are, personal characteristics that define you, a collection of memories and experiences, how others perceive you based on your actions, the core self that remains consistent over time, roles or labels assigned to you by society, a sense of self that distinguishes you from others, the continuity of self through different stages of life, personal values and beliefs that shape your actions, the unique combination of traits that make you distinct",
+    "guess": "ERROR",
+    "success": false
+  },
+  {
+    "target": "Loyalty",
+    "clues_generated": "Faithful to a cause or person Sticking with someone through thick and thin Keeping promises even when it's hard Trusting someone without question A strong commitment to a group or idea Not changing sides in a conflict Supporting someone even when they're wrong Standing by someone in difficult times Consistently choosing the same side Not betraying trust or principles",
+    "guess": "ERROR",
+    "success": false
+  },
+  {
+    "target": "Hope",
+    "clues_generated": "A positive outlook on the future, The belief that things will get better, A light in dark times, The drive to keep going despite challenges, A dream that motivates action, The expectation of a favorable result, A feeling that sustains during hardship, The belief in a better tomorrow, The strength to overcome obstacles, The anticipation of a positive change",
+    "guess": "ERROR",
+    "success": false
+  }
+]

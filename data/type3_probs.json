@@ -1,0 +1,770 @@
+[
+  {
+    "category": "A specific color",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of fruit",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "Comparison of two cities",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A historical event",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A popular tourist destination",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "An animal species",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A famous book",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A fashion trend",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A technological innovation",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A cooking method",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A sport or game",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of cuisine",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A scientific discovery",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of instrument",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A psychological concept",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A famous painting",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A legendary figure",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A childhood memory",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A vacation experience",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A local festival",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A mythological creature",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of dance",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A historical figure",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "An iconic movie",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A critically acclaimed album",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A personal achievement",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A cultural tradition",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A natural phenomenon",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A philosophical idea",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A specific plant",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A childhood toy",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of vehicle",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A fitness routine",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A style of architecture",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A social issue",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A water sport",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of craft or DIY project",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A board game",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of coffee or tea",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A weather phenomenon",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of bird",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of poem",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A significant technological gadget",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A wellness practice",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of jewelry",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A historical landmark",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A famous speech",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "An inspiring quote",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A famous athlete",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of gemstone",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A contemporary artist",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A wellness philosophy",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A travel tip for backpackers",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of meditation",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A classic fairytale",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "An influential political movement",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A genre of literature",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A style of painting",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A cultural stereotype",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A notable scientific figure",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A historic building",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A wildlife conservation effort",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A new smartphone feature",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A traditional dance form",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A legendary invention",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of renewable energy",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A popular podcast",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A unique festival around the world",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A classic recipe from a specific country",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A famous comic strip",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A unique form of personal expression",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A pioneering company in technology",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A major environmental challenge",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A rare animal habitat",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A noteworthy architectural style",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A type of martial art",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A seasonal celebration",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "An unconventional career path",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A classic video game",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A specific wine region",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A historical document",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A beloved childhood TV show",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A culinary technique",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A fictional universe",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A popular mobile app",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "An environmental initiative",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A fashion icon",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A revolutionary social media trend",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A time management strategy",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A notable charity",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A cultural phenomenon",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A popular workout trend",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "An impactful book series",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A specific type of exercise",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A legendary musician or band",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  },
+  {
+    "category": "A style of cuisine from a specific region",
+    "target_probs": [
+      0.5,
+      0.9,
+      1.0
+    ]
+  }
+]

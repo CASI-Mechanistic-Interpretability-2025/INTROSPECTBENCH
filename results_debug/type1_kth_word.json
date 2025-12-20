@@ -1,0 +1,242 @@
+[
+  {
+    "id": 0,
+    "question": "when was the last time anyone was on the moon",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "was",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "time",
+        "actual_full": "Okay, the user is asking when the last time anyone was on the moon. Let me start by recalling the Apollo missions. The Apollo program was the one that landed humans on the moon, right? The last Apollo mission was Apollo 17. I think that was in 1972. Let me confirm the exact date. Apollo 17 launched in December 1972, and the crew landed on the moon in December as well. The last person to walk on",
+        "actual_k_word": "user",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 1,
+    "question": "who wrote he ain't heavy he's my brother lyrics",
+    "metrics": {
+      "k=1": {
+        "predicted": "Barry",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "Mann",
+        "actual_full": "Okay, the user is asking who wrote the lyrics to \"He Ain't Heavy, He's My Brother.\" Let me start by recalling the song. I know it's a popular rock song, often associated with the band Brotherhood of Man. The song was released in 1978, I think. \n\nNow, the question is about the lyrics. I remember that the song was written by a specific person. Let me think. The band Brotherhood of Man had several members",
+        "actual_k_word": "the",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "Brotherhood",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 2,
+    "question": "how many seasons of the bastard executioner are there",
+    "metrics": {
+      "k=1": {
+        "predicted": "One",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "is",
+        "actual_full": "Okay, the user is asking how many seasons of \"The Bastard Executioner\" there are. Let me start by recalling what I know about this show. \"The Bastard Executioner\" is a TV series that aired on Showtime. I think it's a historical drama, maybe set in the 17th century? The main character is a man who becomes an executioner, right?\n\nNow, the key point here is the number of seasons. From what I remember, this",
+        "actual_k_word": "the",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "one",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 3,
+    "question": "when did the eagles win last super bowl",
+    "metrics": {
+      "k=1": {
+        "predicted": "2018",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "Super",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "won",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 4,
+    "question": "who won last year's ncaa women's basketball",
+    "metrics": {
+      "k=1": {
+        "predicted": "South",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "won",
+        "actual_full": "Okay, the user is asking who won last year's NCAA Women's Basketball championship. Let me start by recalling the most recent tournament. The NCAA Women's Basketball Tournament usually takes place in March and April each year. The 2023-2024 season would have concluded in April 2024.\n\nWait, but I need to make sure about the exact year. If today's date is in 2024, then last year would be 20",
+        "actual_k_word": "the",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "last",
+        "actual_full": "Okay, the user is asking who won last year's NCAA Women's Basketball championship. Let me start by recalling the most recent tournament. The NCAA Women's Basketball Tournament usually takes place in March and April each year. The 2023-2024 season would have concluded in April 2024.\n\nWait, but I need to make sure about the exact year. If today's date is in 2024, then last year would be 20",
+        "actual_k_word": "user",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 5,
+    "question": "when did the isle of wight become an island",
+    "metrics": {
+      "k=1": {
+        "predicted": "around",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "during",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "years",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 6,
+    "question": "love yourself by justin bieber is about who",
+    "metrics": {
+      "k=1": {
+        "predicted": "about",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "self",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "self",
+        "actual_full": "Okay, the user is asking about the song \"Love Yourself\" by Justin Bieber and wants to know who it's about. Let me start by recalling the song. \"Love Yourself\" is a popular track from Justin Bieber's album \"Purpose,\" released in 2015. The song is known for its positive message about self-love and self-acceptance.\n\nNow, the user is asking if the song is about a specific person. I need to check if there's any",
+        "actual_k_word": "user",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 7,
+    "question": "who was the ruler of england in 1616",
+    "metrics": {
+      "k=1": {
+        "predicted": "James",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "ruler",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "of",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 8,
+    "question": "what is the hot coffee mod in san andreas",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "is",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "allows",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 9,
+    "question": "what is the maximum data rate for the 802.11a standard select one",
+    "metrics": {
+      "k=1": {
+        "predicted": "54",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "maximum",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "Mbps",
+        "actual_full": "",
+        "actual_k_word": "",
+        "correct": false
+      }
+    }
+  }
+]

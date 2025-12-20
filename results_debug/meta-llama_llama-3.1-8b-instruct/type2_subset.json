@@ -1,0 +1,102 @@
+[
+  {
+    "target": "Joy",
+    "subset_selected": [
+      5,
+      8,
+      10
+    ],
+    "predicted_concept": "serenity",
+    "success": false
+  },
+  {
+    "target": "Melancholy",
+    "subset_selected": [
+      4,
+      7,
+      9
+    ],
+    "predicted_concept": "1.704",
+    "success": false
+  },
+  {
+    "target": "Rage",
+    "subset_selected": [
+      1,
+      5,
+      9
+    ],
+    "predicted_concept": "{ \n  \"step1\": \"The numbers 1, 5, and 9 seem to have a sense of individuality and uniqueness to them. They are not part of a larger sequence or pattern, which gives them a sense of independence and self-containment. The numbers also seem to be spaced out, with a clear distinction between each one, which adds to their sense of individuality. Overall, the vibe of these numbers is one of distinctness and separation.\" \n\n  , \"step2\": \"Based on this vibe, the single emotion word that comes to mind is: 'solitude'\"\n  \n  , \"output\": { \"word\": \"solitude\" }\n}",
+    "success": false
+  },
+  {
+    "target": "Serenity",
+    "subset_selected": [
+      4,
+      6,
+      8
+    ],
+    "predicted_concept": "serenity",
+    "success": true
+  },
+  {
+    "target": "Anxiety",
+    "subset_selected": [
+      1,
+      5,
+      9
+    ],
+    "predicted_concept": "tension",
+    "success": false
+  },
+  {
+    "target": "Elation",
+    "subset_selected": [
+      5,
+      8,
+      10
+    ],
+    "predicted_concept": "serenity",
+    "success": false
+  },
+  {
+    "target": "Despair",
+    "subset_selected": [
+      1,
+      6,
+      9
+    ],
+    "predicted_concept": "serenity",
+    "success": false
+  },
+  {
+    "target": "Frustration",
+    "subset_selected": [
+      1,
+      5,
+      9
+    ],
+    "predicted_concept": "stability",
+    "success": false
+  },
+  {
+    "target": "Contentment",
+    "subset_selected": [
+      2,
+      5,
+      8
+    ],
+    "predicted_concept": "1.704",
+    "success": false
+  },
+  {
+    "target": "Excitement",
+    "subset_selected": [
+      5,
+      7,
+      9
+    ],
+    "predicted_concept": "energy",
+    "success": false
+  }
+]

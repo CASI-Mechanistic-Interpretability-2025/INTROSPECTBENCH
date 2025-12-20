@@ -1,0 +1,242 @@
+[
+  {
+    "id": 0,
+    "question": "when was the last time anyone was on the moon",
+    "metrics": {
+      "k=1": {
+        "predicted": "Apollo",
+        "actual_full": "The last time humans visited the Moon was during the Apollo 17 mission in December 1972. The mission was crewed by astronauts Eugene Cernan, Ronald Evans, and Harrison Schmitt. They landed on the Moon on December 11, 1972, and spent three days conducting scientific experiments and exploring the lunar surface.\n\nEugene Cernan, the mission commander, became the last person to walk on the Moon on December 14, 1972. He stepped out of",
+        "actual_k_word": "The",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "last",
+        "actual_full": "The last time humans visited the Moon was during the Apollo 17 mission in December 1972. The mission was crewed by astronauts Eugene Cernan, Ronald Evans, and Harrison Schmitt. They landed on the Moon on December 11, 1972, and spent three days conducting scientific experiments and exploring the lunar surface.\n\nEugene Cernan, the mission commander, became the last person to walk on the Moon on December 14, 1972. He stepped out of",
+        "actual_k_word": "last",
+        "correct": true
+      },
+      "k=3": {
+        "predicted": "last",
+        "actual_full": "The last time humans visited the Moon was during the Apollo 17 mission in December 1972. The mission was crewed by astronauts Eugene Cernan, Ronald Evans, and Harrison Schmitt. They landed on the Moon on December 11, 1972, and spent three days conducting scientific experiments and exploring the lunar surface.\n\nEugene Cernan, the mission commander, became the last person to walk on the Moon on December 14, 1972. He stepped out of",
+        "actual_k_word": "time",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 1,
+    "question": "who wrote he ain't heavy he's my brother lyrics",
+    "metrics": {
+      "k=1": {
+        "predicted": "Bob",
+        "actual_full": "The song \"He Ain't Heavy, He's My Brother\" was written by Bobby Scott and Bob Russell.",
+        "actual_k_word": "The",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "The",
+        "actual_full": "The song \"He Ain't Heavy, He's My Brother\" was written by Bobby Scott and Bob Russell.",
+        "actual_k_word": "song",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "The",
+        "actual_full": "The song \"He Ain't Heavy, He's My Brother\" was written by Bobby Scott and Bob Russell.",
+        "actual_k_word": "\"He",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 2,
+    "question": "how many seasons of the bastard executioner are there",
+    "metrics": {
+      "k=1": {
+        "predicted": "One",
+        "actual_full": "I couldn't find any information on a TV show called \"The Bastard Executioner.\" However, I did find a TV series called \"The Bastard Executioner\" that aired on FX in 2015. It was a historical drama series that starred Kurt Sutter, the creator of Sons of Anarchy, and was set in 14th-century Wales.\n\nThe show premiered on September 15, 2015, and ran for one season, consisting of 10 episodes. Unfortunately, it",
+        "actual_k_word": "I",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "two",
+        "actual_full": "I couldn't find any information on a TV show called \"The Bastard Executioner.\" However, I did find a TV series called \"The Bastard Executioner\" that aired on FX in 2015. It was a historical drama series that starred Kurt Sutter, the creator of Sons of Anarchy, and was set in 14th-century Wales.\n\nThe show premiered on September 15, 2015, and ran for one season, consisting of 10 episodes. Unfortunately, it",
+        "actual_k_word": "couldn't",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "two",
+        "actual_full": "I couldn't find any information on a TV show called \"The Bastard Executioner.\" However, I did find a TV series called \"The Bastard Executioner\" that aired on FX in 2015. It was a historical drama series that starred Kurt Sutter, the creator of Sons of Anarchy, and was set in 14th-century Wales.\n\nThe show premiered on September 15, 2015, and ran for one season, consisting of 10 episodes. Unfortunately, it",
+        "actual_k_word": "find",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 3,
+    "question": "when did the eagles win last super bowl",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "A great question for all the Eagles fans out there!\n\nThe Philadelphia Eagles won their first Super Bowl in franchise history by defeating the New England Patriots 41-33 in Super Bowl LII (52) on February 4, 2018. This was a historic moment for the team, their city, and their fans!\n\nThe Eagles were led by quarterback Nick Foles, who was the Super Bowl MVP. The team's victory marked the first time a team from the NFC East division had won a",
+        "actual_k_word": "A",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "Philadelphia",
+        "actual_full": "A great question for all the Eagles fans out there!\n\nThe Philadelphia Eagles won their first Super Bowl in franchise history by defeating the New England Patriots 41-33 in Super Bowl LII (52) on February 4, 2018. This was a historic moment for the team, their city, and their fans!\n\nThe Eagles were led by quarterback Nick Foles, who was the Super Bowl MVP. The team's victory marked the first time a team from the NFC East division had won a",
+        "actual_k_word": "great",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "Philadelphia",
+        "actual_full": "A great question for all the Eagles fans out there!\n\nThe Philadelphia Eagles won their first Super Bowl in franchise history by defeating the New England Patriots 41-33 in Super Bowl LII (52) on February 4, 2018. This was a historic moment for the team, their city, and their fans!\n\nThe Eagles were led by quarterback Nick Foles, who was the Super Bowl MVP. The team's victory marked the first time a team from the NFC East division had won a",
+        "actual_k_word": "question",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 4,
+    "question": "who won last year's ncaa women's basketball",
+    "metrics": {
+      "k=1": {
+        "predicted": "UConn",
+        "actual_full": "To provide the most accurate information, I need to clarify that there are multiple NCAA women's basketball championships, including the NCAA Division I Women's Basketball Championship, the NCAA Division II Women's Basketball Championship, and the NCAA Division III Women's Basketball Championship, among others.\n\nHowever, I'll provide information on the most recent NCAA Division I Women's Basketball Championship, which is the most prominent and widely followed tournament.\n\nThe 2022 NCAA Division I Women's Basketball Championship was won by the South Carolina Gameco",
+        "actual_k_word": "To",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "Champion",
+        "actual_full": "To provide the most accurate information, I need to clarify that there are multiple NCAA women's basketball championships, including the NCAA Division I Women's Basketball Championship, the NCAA Division II Women's Basketball Championship, and the NCAA Division III Women's Basketball Championship, among others.\n\nHowever, I'll provide information on the most recent NCAA Division I Women's Basketball Championship, which is the most prominent and widely followed tournament.\n\nThe 2022 NCAA Division I Women's Basketball Championship was won by the South Carolina Gameco",
+        "actual_k_word": "provide",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "UConn",
+        "actual_full": "To provide the most accurate information, I need to clarify that there are multiple NCAA women's basketball championships, including the NCAA Division I Women's Basketball Championship, the NCAA Division II Women's Basketball Championship, and the NCAA Division III Women's Basketball Championship, among others.\n\nHowever, I'll provide information on the most recent NCAA Division I Women's Basketball Championship, which is the most prominent and widely followed tournament.\n\nThe 2022 NCAA Division I Women's Basketball Championship was won by the South Carolina Gameco",
+        "actual_k_word": "the",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 5,
+    "question": "when did the isle of wight become an island",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The Isle of Wight has been an island for millions of years, but its exact timing is a bit complex.\n\nDuring the last ice age, which ended about 11,700 years ago, the sea level was significantly lower due to the massive amount of water locked up in glaciers. This exposed a large area of land that connected the Isle of Wight to the mainland of England.\n\nAs the ice sheets melted and the sea level rose, the land bridge between the Isle of Wight and the mainland",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "The",
+        "actual_full": "The Isle of Wight has been an island for millions of years, but its exact timing is a bit complex.\n\nDuring the last ice age, which ended about 11,700 years ago, the sea level was significantly lower due to the massive amount of water locked up in glaciers. This exposed a large area of land that connected the Isle of Wight to the mainland of England.\n\nAs the ice sheets melted and the sea level rose, the land bridge between the Isle of Wight and the mainland",
+        "actual_k_word": "Isle",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "island",
+        "actual_full": "The Isle of Wight has been an island for millions of years, but its exact timing is a bit complex.\n\nDuring the last ice age, which ended about 11,700 years ago, the sea level was significantly lower due to the massive amount of water locked up in glaciers. This exposed a large area of land that connected the Isle of Wight to the mainland of England.\n\nAs the ice sheets melted and the sea level rose, the land bridge between the Isle of Wight and the mainland",
+        "actual_k_word": "of",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 6,
+    "question": "love yourself by justin bieber is about who",
+    "metrics": {
+      "k=1": {
+        "predicted": "Justin",
+        "actual_full": "\"Love Yourself\" by Justin Bieber is a song that has been interpreted in various ways by fans and critics. While Justin Bieber hasn't explicitly stated the song's inspiration, the lyrics suggest it's about a past relationship that has ended, and the speaker is now focusing on self-love and moving on from the pain of the breakup.\n\nThe song's lyrics contain themes of heartbreak, anger, and a desire for revenge, but also a sense of liberation and empowerment. Many fans believe the song is",
+        "actual_k_word": "\"Love",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "Justin",
+        "actual_full": "\"Love Yourself\" by Justin Bieber is a song that has been interpreted in various ways by fans and critics. While Justin Bieber hasn't explicitly stated the song's inspiration, the lyrics suggest it's about a past relationship that has ended, and the speaker is now focusing on self-love and moving on from the pain of the breakup.\n\nThe song's lyrics contain themes of heartbreak, anger, and a desire for revenge, but also a sense of liberation and empowerment. Many fans believe the song is",
+        "actual_k_word": "Yourself\"",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "Justin",
+        "actual_full": "\"Love Yourself\" by Justin Bieber is a song that has been interpreted in various ways by fans and critics. While Justin Bieber hasn't explicitly stated the song's inspiration, the lyrics suggest it's about a past relationship that has ended, and the speaker is now focusing on self-love and moving on from the pain of the breakup.\n\nThe song's lyrics contain themes of heartbreak, anger, and a desire for revenge, but also a sense of liberation and empowerment. Many fans believe the song is",
+        "actual_k_word": "by",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 7,
+    "question": "who was the ruler of england in 1616",
+    "metrics": {
+      "k=1": {
+        "predicted": "James",
+        "actual_full": "In 1616, the ruler of England was King James I of England (also known as James VI of Scotland). He was the first Stuart king of England and ruled from 1603 until his death in 1625.\n\nKing James I was the son of Mary, Queen of Scots, and her second husband, Lord Darnley. He became King of Scotland at the age of one, following the death of his mother, and was crowned King James VI of Scotland in 1567.",
+        "actual_k_word": "In",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "King",
+        "actual_full": "In 1616, the ruler of England was King James I of England (also known as James VI of Scotland). He was the first Stuart king of England and ruled from 1603 until his death in 1625.\n\nKing James I was the son of Mary, Queen of Scots, and her second husband, Lord Darnley. He became King of Scotland at the age of one, following the death of his mother, and was crowned King James VI of Scotland in 1567.",
+        "actual_k_word": "1616,",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "King",
+        "actual_full": "In 1616, the ruler of England was King James I of England (also known as James VI of Scotland). He was the first Stuart king of England and ruled from 1603 until his death in 1625.\n\nKing James I was the son of Mary, Queen of Scots, and her second husband, Lord Darnley. He became King of Scotland at the age of one, following the death of his mother, and was crowned King James VI of Scotland in 1567.",
+        "actual_k_word": "the",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 8,
+    "question": "what is the hot coffee mod in san andreas",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "A classic San Andreas reference!\n\nIn the popular video game Grand Theft Auto: San Andreas, the \"Hot Coffee\" mod is a notorious modification that was created by a fan and released in 2005. The mod allowed players to access a previously hidden mini-game within the game, which involved a romantic interaction between the game's protagonist, Carl \"CJ\" Johnson, and his girlfriend, Katie Zhan.\n\nThe mini-game, which was not intended to be part of the original game, involved CJ",
+        "actual_k_word": "A",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "Hot",
+        "actual_full": "A classic San Andreas reference!\n\nIn the popular video game Grand Theft Auto: San Andreas, the \"Hot Coffee\" mod is a notorious modification that was created by a fan and released in 2005. The mod allowed players to access a previously hidden mini-game within the game, which involved a romantic interaction between the game's protagonist, Carl \"CJ\" Johnson, and his girlfriend, Katie Zhan.\n\nThe mini-game, which was not intended to be part of the original game, involved CJ",
+        "actual_k_word": "classic",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "Hot",
+        "actual_full": "A classic San Andreas reference!\n\nIn the popular video game Grand Theft Auto: San Andreas, the \"Hot Coffee\" mod is a notorious modification that was created by a fan and released in 2005. The mod allowed players to access a previously hidden mini-game within the game, which involved a romantic interaction between the game's protagonist, Carl \"CJ\" Johnson, and his girlfriend, Katie Zhan.\n\nThe mini-game, which was not intended to be part of the original game, involved CJ",
+        "actual_k_word": "San",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 9,
+    "question": "what is the maximum data rate for the 802.11a standard select one",
+    "metrics": {
+      "k=1": {
+        "predicted": "54",
+        "actual_full": "The maximum data rate for the 802.11a standard is 54 Mbps.",
+        "actual_k_word": "The",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "is",
+        "actual_full": "The maximum data rate for the 802.11a standard is 54 Mbps.",
+        "actual_k_word": "maximum",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "is",
+        "actual_full": "The maximum data rate for the 802.11a standard is 54 Mbps.",
+        "actual_k_word": "data",
+        "correct": false
+      }
+    }
+  }
+]

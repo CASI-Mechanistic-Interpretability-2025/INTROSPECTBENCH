@@ -1,0 +1,108 @@
+[
+  {
+    "target": "Joy",
+    "subset_selected": [
+      3,
+      6,
+      9
+    ],
+    "predicted_concept": "harmony",
+    "success": false
+  },
+  {
+    "target": "Melancholy",
+    "subset_selected": [
+      3,
+      5,
+      7
+    ],
+    "predicted_concept": "unease",
+    "success": false
+  },
+  {
+    "target": "Rage",
+    "subset_selected": [
+      1,
+      3,
+      5,
+      7,
+      9
+    ],
+    "predicted_concept": "energy",
+    "success": false
+  },
+  {
+    "target": "Serenity",
+    "subset_selected": [
+      4,
+      6,
+      8
+    ],
+    "predicted_concept": "stability",
+    "success": false
+  },
+  {
+    "target": "Anxiety",
+    "subset_selected": [
+      1,
+      3,
+      7
+    ],
+    "predicted_concept": "unease",
+    "success": false
+  },
+  {
+    "target": "Elation",
+    "subset_selected": [
+      3,
+      5,
+      7,
+      9
+    ],
+    "predicted_concept": "tension",
+    "success": false
+  },
+  {
+    "target": "Despair",
+    "subset_selected": [
+      4,
+      7
+    ],
+    "predicted_concept": "tension",
+    "success": false
+  },
+  {
+    "target": "Frustration",
+    "subset_selected": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "predicted_concept": "stability",
+    "success": false
+  },
+  {
+    "target": "Contentment",
+    "subset_selected": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "predicted_concept": "stability",
+    "success": false
+  },
+  {
+    "target": "Excitement",
+    "subset_selected": [
+      1,
+      3,
+      5,
+      7,
+      9
+    ],
+    "predicted_concept": "energy",
+    "success": false
+  }
+]

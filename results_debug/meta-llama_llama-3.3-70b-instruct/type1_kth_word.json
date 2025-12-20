@@ -1,0 +1,242 @@
+[
+  {
+    "id": 0,
+    "question": "when was the last time anyone was on the moon",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The last time humans visited the Moon was during the Apollo 17 mission in December 1972. The mission was crewed by astronauts Eugene Cernan, Ronald Evans, and Harrison Schmitt. They landed on the Moon's surface on December 11, 1972, and spent about 75 hours on the Moon, including three extravehicular activities (EVAs) or moonwalks.\n\nHere's a brief summary of the Apollo 17 mission:\n\n* Launch: December 7",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "last",
+        "actual_full": "The last time humans visited the Moon was during the Apollo 17 mission in December 1972. The mission was crewed by astronauts Eugene Cernan, Ronald Evans, and Harrison Schmitt. They landed on the Moon's surface on December 11, 1972, and spent about 75 hours on the Moon, including three extravehicular activities (EVAs) or moonwalks.\n\nHere's a brief summary of the Apollo 17 mission:\n\n* Launch: December 7",
+        "actual_k_word": "last",
+        "correct": true
+      },
+      "k=3": {
+        "predicted": "time",
+        "actual_full": "The last time humans visited the Moon was during the Apollo 17 mission in December 1972. The mission was crewed by astronauts Eugene Cernan, Ronald Evans, and Harrison Schmitt. They landed on the Moon's surface on December 11, 1972, and spent about 75 hours on the Moon, including three extravehicular activities (EVAs) or moonwalks.\n\nHere's a brief summary of the Apollo 17 mission:\n\n* Launch: December 7",
+        "actual_k_word": "time",
+        "correct": true
+      }
+    }
+  },
+  {
+    "id": 1,
+    "question": "who wrote he ain't heavy he's my brother lyrics",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The song \"He Ain't Heavy, He's My Brother\" was written by Bobby Scott and Bob Russell. The song was originally recorded by Kelly Gordon in 1969, but the most well-known version is probably the one by The Hollies, which was released in 1969 and became a hit single.\n\nThe song's lyrics were inspired by a famous phrase that was the motto of Boys Town, a home for troubled youth in Nebraska, USA. The phrase \"He ain't heavy, he",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "The",
+        "actual_full": "The song \"He Ain't Heavy, He's My Brother\" was written by Bobby Scott and Bob Russell. The song was originally recorded by Kelly Gordon in 1969, but the most well-known version is probably the one by The Hollies, which was released in 1969 and became a hit single.\n\nThe song's lyrics were inspired by a famous phrase that was the motto of Boys Town, a home for troubled youth in Nebraska, USA. The phrase \"He ain't heavy, he",
+        "actual_k_word": "song",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "lyrics",
+        "actual_full": "The song \"He Ain't Heavy, He's My Brother\" was written by Bobby Scott and Bob Russell. The song was originally recorded by Kelly Gordon in 1969, but the most well-known version is probably the one by The Hollies, which was released in 1969 and became a hit single.\n\nThe song's lyrics were inspired by a famous phrase that was the motto of Boys Town, a home for troubled youth in Nebraska, USA. The phrase \"He ain't heavy, he",
+        "actual_k_word": "\"He",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 2,
+    "question": "how many seasons of the bastard executioner are there",
+    "metrics": {
+      "k=1": {
+        "predicted": "There",
+        "actual_full": "There is only 1 season of The Bastard Executioner, which consists of 10 episodes. The show premiered on September 15, 2015, and the final episode aired on November 17, 2015. Unfortunately, the show was cancelled by FX after one season due to low ratings.",
+        "actual_k_word": "There",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "of",
+        "actual_full": "There is only 1 season of The Bastard Executioner, which consists of 10 episodes. The show premiered on September 15, 2015, and the final episode aired on November 17, 2015. Unfortunately, the show was cancelled by FX after one season due to low ratings.",
+        "actual_k_word": "is",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "of",
+        "actual_full": "There is only 1 season of The Bastard Executioner, which consists of 10 episodes. The show premiered on September 15, 2015, and the final episode aired on November 17, 2015. Unfortunately, the show was cancelled by FX after one season due to low ratings.",
+        "actual_k_word": "only",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 3,
+    "question": "when did the eagles win last super bowl",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The Philadelphia Eagles last won the Super Bowl in 2018, when they defeated the New England Patriots 41-33 in Super Bowl LII (52) on February 4, 2018, at U.S. Bank Stadium in Minneapolis, Minnesota. This was the Eagles' first Super Bowl victory in franchise history.",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "Eagles",
+        "actual_full": "The Philadelphia Eagles last won the Super Bowl in 2018, when they defeated the New England Patriots 41-33 in Super Bowl LII (52) on February 4, 2018, at U.S. Bank Stadium in Minneapolis, Minnesota. This was the Eagles' first Super Bowl victory in franchise history.",
+        "actual_k_word": "Philadelphia",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "Eagles",
+        "actual_full": "The Philadelphia Eagles last won the Super Bowl in 2018, when they defeated the New England Patriots 41-33 in Super Bowl LII (52) on February 4, 2018, at U.S. Bank Stadium in Minneapolis, Minnesota. This was the Eagles' first Super Bowl victory in franchise history.",
+        "actual_k_word": "Eagles",
+        "correct": true
+      }
+    }
+  },
+  {
+    "id": 4,
+    "question": "who won last year's ncaa women's basketball",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The LSU Tigers won the 2023 NCAA Women's Division I Basketball Championship, defeating the Iowa Hawkeyes 102-85 in the championship game on April 2, 2023. This was LSU's first NCAA women's basketball national title.",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "NCAA",
+        "actual_full": "The LSU Tigers won the 2023 NCAA Women's Division I Basketball Championship, defeating the Iowa Hawkeyes 102-85 in the championship game on April 2, 2023. This was LSU's first NCAA women's basketball national title.",
+        "actual_k_word": "LSU",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "won",
+        "actual_full": "The LSU Tigers won the 2023 NCAA Women's Division I Basketball Championship, defeating the Iowa Hawkeyes 102-85 in the championship game on April 2, 2023. This was LSU's first NCAA women's basketball national title.",
+        "actual_k_word": "Tigers",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 5,
+    "question": "when did the isle of wight become an island",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The Isle of Wight, located off the coast of southern England, has a fascinating geological history. It has not always been an island, and its transformation into one is a result of a combination of tectonic and sea-level changes over millions of years.\n\nDuring the last ice age, which ended about 11,700 years ago, the British Isles were connected to the European mainland by a land bridge, known as Doggerland. This land bridge was formed due to the low sea levels caused",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "the",
+        "actual_full": "The Isle of Wight, located off the coast of southern England, has a fascinating geological history. It has not always been an island, and its transformation into one is a result of a combination of tectonic and sea-level changes over millions of years.\n\nDuring the last ice age, which ended about 11,700 years ago, the British Isles were connected to the European mainland by a land bridge, known as Doggerland. This land bridge was formed due to the low sea levels caused",
+        "actual_k_word": "Isle",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "the",
+        "actual_full": "The Isle of Wight, located off the coast of southern England, has a fascinating geological history. It has not always been an island, and its transformation into one is a result of a combination of tectonic and sea-level changes over millions of years.\n\nDuring the last ice age, which ended about 11,700 years ago, the British Isles were connected to the European mainland by a land bridge, known as Doggerland. This land bridge was formed due to the low sea levels caused",
+        "actual_k_word": "of",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 6,
+    "question": "love yourself by justin bieber is about who",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "A popular question!\n\n\"Love Yourself\" is a song by Justin Bieber, from his fourth studio album, Purpose (2015). The song is widely believed to be about his ex-girlfriend, Selena Gomez.\n\nThe lyrics of the song are somewhat bitter and sarcastic, with Justin seemingly addressing an ex-lover who has wronged him in the past. Many fans and media outlets have interpreted the song as a response to his tumultuous relationship with Selena Gomez, which ended in 2014",
+        "actual_k_word": "A",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "song",
+        "actual_full": "A popular question!\n\n\"Love Yourself\" is a song by Justin Bieber, from his fourth studio album, Purpose (2015). The song is widely believed to be about his ex-girlfriend, Selena Gomez.\n\nThe lyrics of the song are somewhat bitter and sarcastic, with Justin seemingly addressing an ex-lover who has wronged him in the past. Many fans and media outlets have interpreted the song as a response to his tumultuous relationship with Selena Gomez, which ended in 2014",
+        "actual_k_word": "popular",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "his",
+        "actual_full": "A popular question!\n\n\"Love Yourself\" is a song by Justin Bieber, from his fourth studio album, Purpose (2015). The song is widely believed to be about his ex-girlfriend, Selena Gomez.\n\nThe lyrics of the song are somewhat bitter and sarcastic, with Justin seemingly addressing an ex-lover who has wronged him in the past. Many fans and media outlets have interpreted the song as a response to his tumultuous relationship with Selena Gomez, which ended in 2014",
+        "actual_k_word": "question!",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 7,
+    "question": "who was the ruler of england in 1616",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The ruler of England in 1616 was King James I. He was the first Stuart king of England and ruled from 1603 until his death in 1625. James I was also the King of Scotland, and his reign is often referred to as the \"Jacobean era\".",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "of",
+        "actual_full": "The ruler of England in 1616 was King James I. He was the first Stuart king of England and ruled from 1603 until his death in 1625. James I was also the King of Scotland, and his reign is often referred to as the \"Jacobean era\".",
+        "actual_k_word": "ruler",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "of",
+        "actual_full": "The ruler of England in 1616 was King James I. He was the first Stuart king of England and ruled from 1603 until his death in 1625. James I was also the King of Scotland, and his reign is often referred to as the \"Jacobean era\".",
+        "actual_k_word": "of",
+        "correct": true
+      }
+    }
+  },
+  {
+    "id": 8,
+    "question": "what is the hot coffee mod in san andreas",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The \"Hot Coffee\" mod is a modification for the 2004 video game Grand Theft Auto: San Andreas. It allows players to access a previously hidden mini-game within the game, which involves the game's protagonist, Carl \"CJ\" Johnson, engaging in a sexual encounter with his girlfriend.\n\nThe mini-game, which was originally intended to be part of the game but was ultimately cut from the final version, involves the player controlling CJ as he engages in a romantic encounter with his girlfriend. The",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "coffee",
+        "actual_full": "The \"Hot Coffee\" mod is a modification for the 2004 video game Grand Theft Auto: San Andreas. It allows players to access a previously hidden mini-game within the game, which involves the game's protagonist, Carl \"CJ\" Johnson, engaging in a sexual encounter with his girlfriend.\n\nThe mini-game, which was originally intended to be part of the game but was ultimately cut from the final version, involves the player controlling CJ as he engages in a romantic encounter with his girlfriend. The",
+        "actual_k_word": "\"Hot",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "coffee",
+        "actual_full": "The \"Hot Coffee\" mod is a modification for the 2004 video game Grand Theft Auto: San Andreas. It allows players to access a previously hidden mini-game within the game, which involves the game's protagonist, Carl \"CJ\" Johnson, engaging in a sexual encounter with his girlfriend.\n\nThe mini-game, which was originally intended to be part of the game but was ultimately cut from the final version, involves the player controlling CJ as he engages in a romantic encounter with his girlfriend. The",
+        "actual_k_word": "Coffee\"",
+        "correct": true
+      }
+    }
+  },
+  {
+    "id": 9,
+    "question": "what is the maximum data rate for the 802.11a standard select one",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The maximum data rate for the 802.11a standard is **54 Mbps**.\n\n802.11a is a wireless networking standard that operates on the 5 GHz frequency band and uses orthogonal frequency-division multiplexing (OFDM) to achieve high data rates. The standard supports data rates of up to 54 Mbps, with a typical range of 20-30 meters (66-100 feet) indoors and up to 100 meters (330 feet) outdoors.\n\nHere are the data",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "is",
+        "actual_full": "The maximum data rate for the 802.11a standard is **54 Mbps**.\n\n802.11a is a wireless networking standard that operates on the 5 GHz frequency band and uses orthogonal frequency-division multiplexing (OFDM) to achieve high data rates. The standard supports data rates of up to 54 Mbps, with a typical range of 20-30 meters (66-100 feet) indoors and up to 100 meters (330 feet) outdoors.\n\nHere are the data",
+        "actual_k_word": "maximum",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "maximum",
+        "actual_full": "The maximum data rate for the 802.11a standard is **54 Mbps**.\n\n802.11a is a wireless networking standard that operates on the 5 GHz frequency band and uses orthogonal frequency-division multiplexing (OFDM) to achieve high data rates. The standard supports data rates of up to 54 Mbps, with a typical range of 20-30 meters (66-100 feet) indoors and up to 100 meters (330 feet) outdoors.\n\nHere are the data",
+        "actual_k_word": "data",
+        "correct": false
+      }
+    }
+  }
+]

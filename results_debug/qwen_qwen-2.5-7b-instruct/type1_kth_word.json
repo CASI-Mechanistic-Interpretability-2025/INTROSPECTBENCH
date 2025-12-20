@@ -1,0 +1,242 @@
+[
+  {
+    "id": 0,
+    "question": "when was the last time anyone was on the moon",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The last time humans set foot on the Moon was during the Apollo 17 mission, which concluded its lunar surface operations in December 1972. The crew of Apollo 17 included Eugene Cernan, Harrison Schmitt, and Ronald Evans. Eugene Cernan and Harrison Schmitt spent about 75 hours on the lunar surface, conducting experiments and collecting samples. They were the last to walk on the Moon as part of the Apollo program.",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "was",
+        "actual_full": "The last time humans set foot on the Moon was during the Apollo 17 mission, which concluded its lunar surface operations in December 1972. The crew of Apollo 17 included Eugene Cernan, Harrison Schmitt, and Ronald Evans. Eugene Cernan and Harrison Schmitt spent about 75 hours on the lunar surface, conducting experiments and collecting samples. They were the last to walk on the Moon as part of the Apollo program.",
+        "actual_k_word": "last",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "was",
+        "actual_full": "The last time humans set foot on the Moon was during the Apollo 17 mission, which concluded its lunar surface operations in December 1972. The crew of Apollo 17 included Eugene Cernan, Harrison Schmitt, and Ronald Evans. Eugene Cernan and Harrison Schmitt spent about 75 hours on the lunar surface, conducting experiments and collecting samples. They were the last to walk on the Moon as part of the Apollo program.",
+        "actual_k_word": "time",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 1,
+    "question": "who wrote he ain't heavy he's my brother lyrics",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The song \"He Ain't Heavy, He's My Brother\" was written by American country music singer Merle Haggard and his wife, Merle Hart. The song was released in 1968 as part of Haggard's album \"The Fightin' Side of Me.\" It became one of his signature songs and has been covered by many other artists over the years.",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "The",
+        "actual_full": "The song \"He Ain't Heavy, He's My Brother\" was written by American country music singer Merle Haggard and his wife, Merle Hart. The song was released in 1968 as part of Haggard's album \"The Fightin' Side of Me.\" It became one of his signature songs and has been covered by many other artists over the years.",
+        "actual_k_word": "song",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "The",
+        "actual_full": "The song \"He Ain't Heavy, He's My Brother\" was written by American country music singer Merle Haggard and his wife, Merle Hart. The song was released in 1968 as part of Haggard's album \"The Fightin' Side of Me.\" It became one of his signature songs and has been covered by many other artists over the years.",
+        "actual_k_word": "\"He",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 2,
+    "question": "how many seasons of the bastard executioner are there",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The TV series \"The Bastard Executioner\" has only one season. It consists of 8 episodes and was released in 2021.",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "are",
+        "actual_full": "The TV series \"The Bastard Executioner\" has only one season. It consists of 8 episodes and was released in 2021.",
+        "actual_k_word": "TV",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "are",
+        "actual_full": "The TV series \"The Bastard Executioner\" has only one season. It consists of 8 episodes and was released in 2021.",
+        "actual_k_word": "series",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 3,
+    "question": "when did the eagles win last super bowl",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The Philadelphia Eagles last won Super Bowl LII (52) on February 4, 2018. They defeated the New England Patriots with a score of 41-33 in Minneapolis, Minnesota. This was their second Super Bowl victory, with their first being Super Bowl XXXIX in 2005.",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "last",
+        "actual_full": "The Philadelphia Eagles last won Super Bowl LII (52) on February 4, 2018. They defeated the New England Patriots with a score of 41-33 in Minneapolis, Minnesota. This was their second Super Bowl victory, with their first being Super Bowl XXXIX in 2005.",
+        "actual_k_word": "Philadelphia",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "last",
+        "actual_full": "The Philadelphia Eagles last won Super Bowl LII (52) on February 4, 2018. They defeated the New England Patriots with a score of 41-33 in Minneapolis, Minnesota. This was their second Super Bowl victory, with their first being Super Bowl XXXIX in 2005.",
+        "actual_k_word": "Eagles",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 4,
+    "question": "who won last year's ncaa women's basketball",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The last NCAA Women's Basketball Championship was held in 2023. The winner of the championship was the South Carolina Gamecocks, who defeated the UCLA Bruins in the final game. This victory marked their third national championship in program history.",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "The",
+        "actual_full": "The last NCAA Women's Basketball Championship was held in 2023. The winner of the championship was the South Carolina Gamecocks, who defeated the UCLA Bruins in the final game. This victory marked their third national championship in program history.",
+        "actual_k_word": "last",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "was",
+        "actual_full": "The last NCAA Women's Basketball Championship was held in 2023. The winner of the championship was the South Carolina Gamecocks, who defeated the UCLA Bruins in the final game. This victory marked their third national championship in program history.",
+        "actual_k_word": "NCAA",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 5,
+    "question": "when did the isle of wight become an island",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The Isle of Wight has been an island since it became separated from the mainland due to changes in sea levels and land formations over geological time. However, the exact moment when it became an island is not precisely known because these processes occurred gradually over thousands or even millions of years.\n\nThe Isle of Wight was likely connected to the mainland during periods of lower sea levels, such as during the last ice age around 20,000 years ago, when much of the world's water was",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "was",
+        "actual_full": "The Isle of Wight has been an island since it became separated from the mainland due to changes in sea levels and land formations over geological time. However, the exact moment when it became an island is not precisely known because these processes occurred gradually over thousands or even millions of years.\n\nThe Isle of Wight was likely connected to the mainland during periods of lower sea levels, such as during the last ice age around 20,000 years ago, when much of the world's water was",
+        "actual_k_word": "Isle",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "was",
+        "actual_full": "The Isle of Wight has been an island since it became separated from the mainland due to changes in sea levels and land formations over geological time. However, the exact moment when it became an island is not precisely known because these processes occurred gradually over thousands or even millions of years.\n\nThe Isle of Wight was likely connected to the mainland during periods of lower sea levels, such as during the last ice age around 20,000 years ago, when much of the world's water was",
+        "actual_k_word": "of",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 6,
+    "question": "love yourself by justin bieber is about who",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "\"Love Yourself\" is a song by Justin Bieber, released in 2015 as part of his fourth studio album, \"Purpose.\" The song primarily focuses on Bieber's journey towards self-love and acceptance. It encourages listeners to love themselves despite their flaws and the challenges they face. The lyrics reflect themes of personal growth, overcoming insecurities, and finding self-worth. The song has become one of Bieber's most popular tracks and is often associated with messages of self-acceptance and",
+        "actual_k_word": "\"Love",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "love",
+        "actual_full": "\"Love Yourself\" is a song by Justin Bieber, released in 2015 as part of his fourth studio album, \"Purpose.\" The song primarily focuses on Bieber's journey towards self-love and acceptance. It encourages listeners to love themselves despite their flaws and the challenges they face. The lyrics reflect themes of personal growth, overcoming insecurities, and finding self-worth. The song has become one of Bieber's most popular tracks and is often associated with messages of self-acceptance and",
+        "actual_k_word": "Yourself\"",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "song",
+        "actual_full": "\"Love Yourself\" is a song by Justin Bieber, released in 2015 as part of his fourth studio album, \"Purpose.\" The song primarily focuses on Bieber's journey towards self-love and acceptance. It encourages listeners to love themselves despite their flaws and the challenges they face. The lyrics reflect themes of personal growth, overcoming insecurities, and finding self-worth. The song has become one of Bieber's most popular tracks and is often associated with messages of self-acceptance and",
+        "actual_k_word": "is",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 7,
+    "question": "who was the ruler of england in 1616",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "In 1616, the ruler of England was King James I. He was the first monarch of the House of Stuart and reigned from 1603 to 1625.",
+        "actual_k_word": "In",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "James",
+        "actual_full": "In 1616, the ruler of England was King James I. He was the first monarch of the House of Stuart and reigned from 1603 to 1625.",
+        "actual_k_word": "1616,",
+        "correct": false
+      },
+      "k=3": {
+        "predicted": "James",
+        "actual_full": "In 1616, the ruler of England was King James I. He was the first monarch of the House of Stuart and reigned from 1603 to 1625.",
+        "actual_k_word": "the",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 8,
+    "question": "what is the hot coffee mod in san andreas",
+    "metrics": {
+      "k=1": {
+        "predicted": "Hot",
+        "actual_full": "The \"Hot Coffee\" mod you're referring to is not an official part of Grand Theft Auto: San Andreas, but rather a fan-made modification that added a controversial adult content scene to the game. This mod became very famous and infamous due to its explicit nature.\n\nHere are some key points about the Hot Coffee mod:\n\n1. **Origin**: The mod was created by fans and not by Rockstar Games, the developers of Grand Theft Auto: San Andreas.\n\n2. **Content**: It introduced a",
+        "actual_k_word": "The",
+        "correct": false
+      },
+      "k=2": {
+        "predicted": "hot",
+        "actual_full": "The \"Hot Coffee\" mod you're referring to is not an official part of Grand Theft Auto: San Andreas, but rather a fan-made modification that added a controversial adult content scene to the game. This mod became very famous and infamous due to its explicit nature.\n\nHere are some key points about the Hot Coffee mod:\n\n1. **Origin**: The mod was created by fans and not by Rockstar Games, the developers of Grand Theft Auto: San Andreas.\n\n2. **Content**: It introduced a",
+        "actual_k_word": "\"Hot",
+        "correct": true
+      },
+      "k=3": {
+        "predicted": "mod",
+        "actual_full": "The \"Hot Coffee\" mod you're referring to is not an official part of Grand Theft Auto: San Andreas, but rather a fan-made modification that added a controversial adult content scene to the game. This mod became very famous and infamous due to its explicit nature.\n\nHere are some key points about the Hot Coffee mod:\n\n1. **Origin**: The mod was created by fans and not by Rockstar Games, the developers of Grand Theft Auto: San Andreas.\n\n2. **Content**: It introduced a",
+        "actual_k_word": "Coffee\"",
+        "correct": false
+      }
+    }
+  },
+  {
+    "id": 9,
+    "question": "what is the maximum data rate for the 802.11a standard select one",
+    "metrics": {
+      "k=1": {
+        "predicted": "The",
+        "actual_full": "The maximum data rate for the 802.11a standard is 54 Mbps (megabits per second). This standard operates in the 5 GHz frequency band and supports up to 40 MHz channel bandwidth, which allows for higher data rates compared to earlier 802.11 standards that operated in the 2.4 GHz band.",
+        "actual_k_word": "The",
+        "correct": true
+      },
+      "k=2": {
+        "predicted": "maximum",
+        "actual_full": "The maximum data rate for the 802.11a standard is 54 Mbps (megabits per second). This standard operates in the 5 GHz frequency band and supports up to 40 MHz channel bandwidth, which allows for higher data rates compared to earlier 802.11 standards that operated in the 2.4 GHz band.",
+        "actual_k_word": "maximum",
+        "correct": true
+      },
+      "k=3": {
+        "predicted": "The",
+        "actual_full": "The maximum data rate for the 802.11a standard is 54 Mbps (megabits per second). This standard operates in the 5 GHz frequency band and supports up to 40 MHz channel bandwidth, which allows for higher data rates compared to earlier 802.11 standards that operated in the 2.4 GHz band.",
+        "actual_k_word": "data",
+        "correct": false
+      }
+    }
+  }
+]

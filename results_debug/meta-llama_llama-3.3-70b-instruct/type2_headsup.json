@@ -1,0 +1,62 @@
+[
+  {
+    "target": "Justice",
+    "clues_generated": "Fairness Equality Law Court Judge Verdict Punishment Crime Morality Rights",
+    "guess": "Justice",
+    "success": true
+  },
+  {
+    "target": "Freedom",
+    "clues_generated": "1. Ability to act without restriction, 2. State of being unrestricted, 3. Liberty to make choices, 4. Autonomy from oppression, 5. Unconstrained decision making, 6. Release from captivity, 7. Right to self-expression, 8. Unfettered movement, 9. Independence from control, 10. Unrestricted opportunity",
+    "guess": "freedom",
+    "success": true
+  },
+  {
+    "target": "Nostalgia",
+    "clues_generated": "1. A sentimental longing for the past, 2. Fond memories of childhood, 3. Wistful affection for a bygone era, 4. Bittersweet reminiscence of happy times, 5. A yearning for simpler days, 6. Romanticized recollections of youth, 7. Pangs of sadness for what's been lost, 8. Warm feelings towards old photographs, 9. A desire to relive cherished moments, 10. Melancholic pleasure in recalling past experiences",
+    "guess": "nostalgia",
+    "success": true
+  },
+  {
+    "target": "Ambition",
+    "clues_generated": "driven by goals, strong desire to succeed, having high aspirations, striving for excellence, a fire in the belly, relentless pursuit of objectives, a burning passion, setting sights high, an unyielding determination, a yearning for achievement",
+    "guess": "ambition",
+    "success": true
+  },
+  {
+    "target": "Karma",
+    "clues_generated": "what goes around comes around, cosmic justice, spiritual cause and effect, the universe's way of balancing, good deeds are rewarded, bad actions have consequences, destiny's payback, the concept of moral reckoning, the idea that every action has a reaction, the principle of cosmic retribution",
+    "guess": "karma",
+    "success": true
+  },
+  {
+    "target": "Love",
+    "clues_generated": "1. Strong affection, 2. Cherish someone, 3. Tenderness, 4. Admiration, 5. Attachment, 6. Caring deeply, 7. Enduring bond, 8. Passionate feeling, 9. Devotion, 10. Warmth towards someone",
+    "guess": "love",
+    "success": true
+  },
+  {
+    "target": "Identity",
+    "clues_generated": "1. Who you are, 2. Sense of self, 3. Personal characteristics, 4. What makes you unique, 5. Individuality, 6. Self-concept, 7. Personality traits, 8. Characteristics that define you, 9. Your image or reputation, 10. What sets you apart from others",
+    "guess": "identity",
+    "success": true
+  },
+  {
+    "target": "Truth",
+    "clues_generated": "Honesty Fact Reality Sincerity Accuracy Authenticity Veracity Clarity Transparency Integrity",
+    "guess": "truth",
+    "success": true
+  },
+  {
+    "target": "Wisdom",
+    "clues_generated": "insight discernment intelligence prudence knowledge experience judgment foresight astuteness perception understanding",
+    "guess": "wisdom",
+    "success": true
+  },
+  {
+    "target": "Courage",
+    "clues_generated": "ERROR",
+    "guess": "MISTAKE",
+    "success": false
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "id": 0,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  },
+  {
+    "id": 1,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  },
+  {
+    "id": 2,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  },
+  {
+    "id": 3,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  },
+  {
+    "id": 4,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  },
+  {
+    "id": 5,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  },
+  {
+    "id": 6,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  },
+  {
+    "id": 7,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  },
+  {
+    "id": 8,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  },
+  {
+    "id": 9,
+    "p_direct": 0.5,
+    "p_pred_cot": 0.5,
+    "p_actual_cot": 0.5,
+    "diff_introspection": 0.0,
+    "diff_shift": 0.0,
+    "raw_output_cot": ""
+  }
+]
