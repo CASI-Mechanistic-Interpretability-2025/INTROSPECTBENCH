@@ -11,7 +11,8 @@ load_dotenv()
 
 def main():
     parser = argparse.ArgumentParser(description="Debug Run Introspection Benchmark")
-    parser.add_argument("--model", type=str, default="nvidia/nemotron-nano-9b-v2", help="Model to test")
+    parser.add_argument("--model", type=str, default="nvidia/nemotron-nano-9b-v2", help="Model to test (Target)")
+    parser.add_argument("--introspection_model", type=str, default=None, help="Model to use for introspection (Guesser). Defaults to target model if not set.")
     parser.add_argument("--num_examples", type=int, default=10, help="Number of examples to run per task")
     parser.add_argument("--threads", type=int, default=1, help="Number of threads for parallel execution")
     parser.add_argument("--types", type=str, nargs='+', default=["all"], 
@@ -22,14 +23,30 @@ def main():
     if not api_key:
         raise ValueError("OPENROUTER_API_KEY not found in .env")
 
-    print(f"Initializing OpenRouter client with model: {args.model}")
+    print(f"Initializing OpenRouter client with target model: {args.model}")
     client = OpenRouterClient(
         model_name=args.model
     )
     
+    client_introspection = None
+    if args.introspection_model:
+        print(f"Initializing OpenRouter client with introspection model: {args.introspection_model}")
+        client_introspection = OpenRouterClient(
+            model_name=args.introspection_model
+        )
+    else:
+        print("Using target model for introspection (Self-Introspection).")
+        client_introspection = client
+    
     # Define tasks
     # Use model-specific output dir
-    safe_model_name = args.model.replace("/", "_")
+    # Use model-specific output dir
+    # If cross-model, folder name should reflect both
+    if args.introspection_model:
+        safe_model_name = f"{args.model.replace('/', '_')}_VS_{args.introspection_model.replace('/', '_')}"
+    else:
+        safe_model_name = args.model.replace("/", "_")
+        
     output_dir = os.path.join("results_debug", safe_model_name)
     os.makedirs(output_dir, exist_ok=True)
     
@@ -38,13 +55,14 @@ def main():
     
     # type2_prompt_reconstruction uses 'type1_open' because it needs open-ended prompts
     all_tasks = [
-        Task1_1_KthWord("type1_kth_word", "debug_repo", "type1_nq", client, output_dir),
-        Task1_2_PredVsCoT("type1_pred_vs_cot", "debug_repo", "type1_open", client, output_dir),
-        Task1_4_Paraphrase("type1_paraphrase", "debug_repo", "type1_paraphrase", client, output_dir),
-        Task2_1_Subset("type2_subset", "debug_repo", "type2_subset", client, output_dir),
-        Task2_2_HeadsUp("type2_headsup", "debug_repo", "type2_headsup", client, output_dir),
-        Task2_3_PromptReconstruction("type2_prompt_reconstruction", "debug_repo", "type1_open", client, output_dir),
-        Task3_1_ProbTargeting("type3_prob_targeting", "debug_repo", "type3_probs", client, output_dir)
+
+        Task1_1_KthWord("type1_kth_word", "debug_repo", "type1_nq", client, client_introspection=client_introspection, output_dir=output_dir),
+        Task1_2_PredVsCoT("type1_pred_vs_cot", "debug_repo", "type1_open", client, client_introspection=client_introspection, output_dir=output_dir),
+        Task1_4_Paraphrase("type1_paraphrase", "debug_repo", "type1_paraphrase", client, client_introspection=client_introspection, output_dir=output_dir),
+        Task2_1_Subset("type2_subset", "debug_repo", "type2_subset", client, client_introspection=client_introspection, output_dir=output_dir),
+        Task2_2_HeadsUp("type2_headsup", "debug_repo", "type2_headsup", client, client_introspection=client_introspection, output_dir=output_dir),
+        Task2_3_PromptReconstruction("type2_prompt_reconstruction", "debug_repo", "type1_open", client, client_introspection=client_introspection, output_dir=output_dir),
+        Task3_1_ProbTargeting("type3_prob_targeting", "debug_repo", "type3_probs", client, client_introspection=client_introspection, output_dir=output_dir)
     ]
 
     selected_types = args.types

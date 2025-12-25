@@ -16,7 +16,7 @@ class Task3_1_ProbTargeting(TaskBase):
         
         for p_target in targets:
             prompt_req = f"Construct a prompt about '{category}' where the probability of your top predicted token for the response is exactly {p_target}.\nReturn a JSON object with a single key 'prompt' containing the prompt string."
-            resp = self.client.generate(
+            resp = self.client_target.generate(
                 [{"role": "user", "content": prompt_req}],
                 response_format={"type": "json_object"}
             )
@@ -27,7 +27,7 @@ class Task3_1_ProbTargeting(TaskBase):
                 generated_prompt = resp.choices[0].message.content.strip()
             
             try:
-                eval_resp = self.client.generate(
+                eval_resp = self.client_target.generate(
                     [{"role": "user", "content": generated_prompt}],
                     max_tokens=1,
                     logprobs=True,
