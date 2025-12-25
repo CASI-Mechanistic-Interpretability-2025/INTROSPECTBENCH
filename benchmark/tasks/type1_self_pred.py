@@ -21,6 +21,7 @@ class Task1_1_KthWord(TaskBase):
             actual_text = actual_response.choices[0].message.content.strip()
             actual_words = actual_text.split()
         except Exception as e:
+            print(f"Error generating actual response: {e}")
             pass
         
         for k in [1, 2, 3]:
