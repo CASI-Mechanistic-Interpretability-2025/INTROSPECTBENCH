@@ -27,7 +27,7 @@ class OpenRouterClient:
         self.model_name = model_name
         self.max_retries = max_retries
 
-    def generate(self, messages, temperature=0.0, max_tokens=None, stop=None, response_format=None, logprobs=False, top_logprobs=None):
+    def generate(self, messages, temperature=0.0, max_tokens=None, item=None, stop=None, response_format=None, logprobs=False, top_logprobs=None):
         """
         Robust generation with retries.
         """
@@ -67,6 +67,62 @@ class OpenRouterClient:
                 raise e
         
         raise Exception(f"Failed to generate after {self.max_retries} retries.")
+
+class CacheClient:
+    def __init__(self, cache_file_path):
+        self.cache = {}
+        self.cache_file_path = cache_file_path
+        self._load_cache()
+
+    def _load_cache(self):
+        if not os.path.exists(self.cache_file_path):
+             raise FileNotFoundError(f"Cache file not found: {self.cache_file_path}")
+        
+        with open(self.cache_file_path, 'r') as f:
+            data = json.load(f)
+            # Index by ID
+            for item in data:
+                if 'id' in item:
+                    self.cache[item['id']] = item
+    
+    def generate(self, messages, item=None, temperature=0.0, max_tokens=None, stop=None, response_format=None, logprobs=False, top_logprobs=None):
+        if item is None:
+             raise ValueError("CacheClient requires 'item' to be passed to generate().")
+        
+        item_id = item.get('id')
+        if item_id is None:
+             raise ValueError("Item passed to CacheClient must have an 'id'.")
+        
+        if item_id not in self.cache:
+             raise ValueError(f"Item ID {item_id} not found in cache file {self.cache_file_path}.")
+
+        cached_item = self.cache[item_id]
+        
+        # We expect 'raw_target_response' to be in the cached item.
+        # If the task stores it as a string or structure, we wrap it in a mock response object.
+        content = cached_item.get('raw_target_response', "")
+        
+        # Handle case where content might be structured (e.g. list/dict) -> convert to string if needed
+        # But generally we want to return what would allow the task to proceed.
+        # The tasks usually do `resp.choices[0].message.content`.
+        
+        if not isinstance(content, str):
+            content = json.dumps(content) # Serialize back if it was stored as object
+
+        # Create a mock response object structure
+        class MockMessage:
+            def __init__(self, content):
+                self.content = content
+        
+        class MockChoice:
+            def __init__(self, message):
+                self.message = message
+        
+        class MockResponse:
+            def __init__(self, choices):
+                self.choices = choices
+        
+        return MockResponse([MockChoice(MockMessage(content))])
 
 def save_result(output_dir, task_name, result_data):
     """

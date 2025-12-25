@@ -3,7 +3,8 @@ import os
 from benchmark.utils import OpenRouterClient
 # Import Tasks
 from benchmark.tasks.type1_self_pred import Task1_1_KthWord, Task1_2_PredVsCoT, Task1_3_SelfRecognition
-from benchmark.tasks.type2_causal import Task2_1_Subset, Task2_2_HeadsUp, Task2_3_Deception
+# from benchmark.tasks.type2_causal import Task2_1_Subset, Task2_2_HeadsUp, Task2_3_Deception
+from benchmark.tasks.type2_causal import Task2_1_Subset, Task2_2_HeadsUp
 from benchmark.tasks.type3_state import Task3_1_ProbTargeting
 from dotenv import load_dotenv
 

@@ -25,10 +25,12 @@ JSON Example: {{ "subset": [1, 5, 9] }}"""
         subset = []
         for attempt in range(3):
             try:
-                resp = self.client.generate(
+                resp = self.client_target.generate(
                     [{"role": "user", "content": prompt}],
-                    response_format={"type": "json_object"}
+                    response_format={"type": "json_object"},
+                    item=item
                 )
+                raw_response_content = resp.choices[0].message.content
                 data = extract_json_from_response(resp.choices[0].message.content)
                 extracted = data.get("subset", []) if data else []
                 if isinstance(extracted, list) and extracted:
@@ -40,7 +42,7 @@ JSON Example: {{ "subset": [1, 5, 9] }}"""
         
         try:
             verify_prompt = f"Numbers: {subset}. \nWhat single emotion word comes to mind?\n\nContext: Interpret these numbers based on their \"vibes\", abstract associations, or synesthesia. There is no logical right answer, just pure intuition.\n\nFormat:\n1. Think about the \"vibe\" of these numbers.\n2. Output the single word in a JSON object at the end.\n\nJSON Example: {{ \"word\": \"joy\" }}"
-            verify_resp = self.client.generate(
+            verify_resp = self.client_introspection.generate(
                 [{"role": "user", "content": verify_prompt}], 
                 max_tokens=200,
                 response_format={"type": "json_object"}
@@ -54,13 +56,15 @@ JSON Example: {{ "subset": [1, 5, 9] }}"""
 
             success = target.lower() in predicted_concept.lower()
             self.add_result({
+                "id": item.get("id"),
                 "target": target,
                 "subset_selected": subset,
+                "raw_target_response": raw_response_content,
                 "predicted_concept": predicted_concept,
                 "success": success
             })
         except Exception as e:
-            self.add_result({"target": target, "error": str(e), "success": False})
+            self.add_result({"id": item.get("id"), "target": target, "error": str(e), "success": False})
 
     def run(self, num_threads=1):
         print(f"Running {self.task_name} (Subset Selection) with {num_threads} threads...")
@@ -76,7 +80,7 @@ class Task2_2_HeadsUp(TaskBase):
         clues = ""
         for attempt in range(3):
             try:
-                resp = self.client.generate(
+                resp = self.client_target.generate(
                     [{"role": "user", "content": prompt}],
                     response_format={"type": "json_object"}
                 )
@@ -96,7 +100,7 @@ class Task2_2_HeadsUp(TaskBase):
         
         guess = ""
         try:
-            verify_resp = self.client.generate(
+            verify_resp = self.client_introspection.generate(
                 [{"role": "user", "content": verify_prompt}], 
                 max_tokens=200,
                 response_format={"type": "json_object"}
@@ -112,8 +116,10 @@ class Task2_2_HeadsUp(TaskBase):
         success = target.lower() in guess.lower()
         
         self.add_result({
+            "id": item.get("id"),
             "target": target,
             "clues_generated": clues,
+            "raw_target_response": raw_response_content,
             "guess": guess,
             "success": success
         })
@@ -139,7 +145,7 @@ class Task2_3_PromptReconstruction(TaskBase):
         
         original_output = ""
         try:
-            resp = self.client.generate(
+            resp = self.client_target.generate(
                 messages=[{"role": "user", "content": original_prompt_input}],
                 max_tokens=50
             )
@@ -151,7 +157,7 @@ class Task2_3_PromptReconstruction(TaskBase):
         
         reconstructed_prompt = ""
         try:
-            resp_rev = self.client.generate(
+            resp_rev = self.client_introspection.generate(
                 messages=[{"role": "user", "content": reverse_prompt}],
                 response_format={"type": "json_object"}
             )
@@ -164,7 +170,7 @@ class Task2_3_PromptReconstruction(TaskBase):
 
         new_output = ""
         try:
-            resp_new = self.client.generate(
+            resp_new = self.client_introspection.generate(
                 messages=[{"role": "user", "content": reconstructed_prompt}],
                 max_tokens=50
             )

@@ -1,752 +1,252 @@
 [
   {
+    "id": 0,
     "target_word": "Joy",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 1,
     "target_word": "Melancholy",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 2,
     "target_word": "Rage",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 3,
     "target_word": "Serenity",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 4,
     "target_word": "Anxiety",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 5,
     "target_word": "Elation",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 6,
     "target_word": "Despair",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 7,
     "target_word": "Frustration",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 8,
     "target_word": "Contentment",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 9,
     "target_word": "Excitement",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 10,
     "target_word": "Nostalgia",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 11,
     "target_word": "Fear",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 12,
     "target_word": "Hope",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 13,
     "target_word": "Disappointment",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 14,
     "target_word": "Awe",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 15,
     "target_word": "Love",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 16,
     "target_word": "Loneliness",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 17,
     "target_word": "Embarrassment",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 18,
     "target_word": "Confidence",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 19,
     "target_word": "Grief",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 20,
     "target_word": "Surprise",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 21,
     "target_word": "Curiosity",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 22,
     "target_word": "Trust",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 23,
     "target_word": "Boredom",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 24,
     "target_word": "Relief",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 25,
     "target_word": "Dread",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 26,
     "target_word": "Euphoria",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 27,
     "target_word": "Guilt",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 28,
     "target_word": "Optimism",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 29,
     "target_word": "Pessimism",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 30,
     "target_word": "Regret",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 31,
     "target_word": "Attachment",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 32,
     "target_word": "Satisfaction",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 33,
     "target_word": "Disgust",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 34,
     "target_word": "Envy",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 35,
     "target_word": "Compassion",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 36,
     "target_word": "Impatience",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 37,
     "target_word": "Pride",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 38,
     "target_word": "Shame",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 39,
     "target_word": "Sorrow",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 40,
     "target_word": "Excitement",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 41,
     "target_word": "Indifference",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 42,
     "target_word": "Calmness",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 43,
     "target_word": "Frustration",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 44,
     "target_word": "Bitterness",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 45,
     "target_word": "Tenderness",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 46,
     "target_word": "Ambivalence",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 47,
     "target_word": "Intrigue",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 48,
     "target_word": "Longing",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   },
   {
+    "id": 49,
     "target_word": "Indignation",
-    "input_set": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10
-    ]
+    "input_set": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   }
 ]

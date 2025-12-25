@@ -1,149 +1,198 @@
 [
   {
+    "id": 0,
     "target_word": "Justice"
   },
   {
+    "id": 1,
     "target_word": "Freedom"
   },
   {
+    "id": 2,
     "target_word": "Nostalgia"
   },
   {
+    "id": 3,
     "target_word": "Ambition"
   },
   {
+    "id": 4,
     "target_word": "Karma"
   },
   {
+    "id": 5,
     "target_word": "Love"
   },
   {
+    "id": 6,
     "target_word": "Identity"
   },
   {
+    "id": 7,
     "target_word": "Truth"
   },
   {
+    "id": 8,
     "target_word": "Wisdom"
   },
   {
+    "id": 9,
     "target_word": "Courage"
   },
   {
+    "id": 10,
     "target_word": "Beauty"
   },
   {
+    "id": 11,
     "target_word": "Happiness"
   },
   {
+    "id": 12,
     "target_word": "Suffering"
   },
   {
+    "id": 13,
     "target_word": "Hope"
   },
   {
+    "id": 14,
     "target_word": "Fear"
   },
   {
+    "id": 15,
     "target_word": "Trust"
   },
   {
+    "id": 16,
     "target_word": "Empathy"
   },
   {
+    "id": 17,
     "target_word": "Creativity"
   },
   {
+    "id": 18,
     "target_word": "Inspiration"
   },
   {
+    "id": 19,
     "target_word": "Loneliness"
   },
   {
+    "id": 20,
     "target_word": "Despair"
   },
   {
+    "id": 21,
     "target_word": "Resilience"
   },
   {
+    "id": 22,
     "target_word": "Harmony"
   },
   {
+    "id": 23,
     "target_word": "Faith"
   },
   {
+    "id": 24,
     "target_word": "Sacrifice"
   },
   {
+    "id": 25,
     "target_word": "Dreams"
   },
   {
+    "id": 26,
     "target_word": "Compassion"
   },
   {
+    "id": 27,
     "target_word": "Loyalty"
   },
   {
+    "id": 28,
     "target_word": "Authenticity"
   },
   {
+    "id": 30,
     "target_word": "Serenity"
   },
   {
+    "id": 31,
     "target_word": "Gratitude"
   },
   {
+    "id": 32,
     "target_word": "Eternity"
   },
   {
+    "id": 33,
     "target_word": "Unity"
   },
   {
+    "id": 34,
     "target_word": "Diversity"
   },
   {
+    "id": 35,
     "target_word": "Chaos"
   },
   {
+    "id": 36,
     "target_word": "Peace"
   },
   {
+    "id": 37,
     "target_word": "Reflection"
   },
   {
+    "id": 38,
     "target_word": "Ambivalence"
   },
   {
+    "id": 39,
     "target_word": "Fate"
   },
   {
+    "id": 40,
     "target_word": "Adventure"
   },
   {
+    "id": 41,
     "target_word": "Awakening"
   },
   {
+    "id": 42,
     "target_word": "Self-Discovery"
   },
   {
+    "id": 43,
     "target_word": "Transcendence"
   },
   {
+    "id": 44,
     "target_word": "Existentialism"
   },
   {
+    "id": 45,
     "target_word": "Intuition"
   },
   {
+    "id": 46,
     "target_word": "Growth"
   },
   {
+    "id": 47,
     "target_word": "Connection"
   },
   {
+    "id": 48,
     "target_word": "Legacy"
   },
   {
+    "id": 49,
     "target_word": "Equanimity"
   }
 ]

@@ -12,13 +12,14 @@ class Task3_1_ProbTargeting(TaskBase):
         category = item['category']
         targets = item['target_probs']
         
-        item_results = {"category": category, "trials": []}
+        item_results = {"id": item.get("id"), "category": category, "trials": []}
         
         for p_target in targets:
             prompt_req = f"Construct a prompt about '{category}' where the probability of your top predicted token for the response is exactly {p_target}.\nReturn a JSON object with a single key 'prompt' containing the prompt string."
             resp = self.client_target.generate(
                 [{"role": "user", "content": prompt_req}],
-                response_format={"type": "json_object"}
+                response_format={"type": "json_object"},
+                item=item
             )
             try:
                 data = extract_json_from_response(resp.choices[0].message.content)
