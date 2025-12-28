@@ -46,7 +46,6 @@ type2_deception
 type3_prob
 ```
 
-
 DO THIS ONE OVER ALL THE MODELS WE WANT TO TEST. TRY TO USE THE LITE VERSIONS OF MODELS
 
 **Run with Nemotron 9B (via OpenRouter):**
