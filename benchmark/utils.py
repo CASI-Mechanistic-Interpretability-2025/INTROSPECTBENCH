@@ -94,6 +94,12 @@ def extract_json_from_response(response_text):
         
     text = response_text.strip()
     
+    # 0. Try direct load first (fast path)
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+    
     # 1. Try to find markdown code blocks. 
     # If multiple blocks exist, we assume the answer is in the LAST one (reasoning might be in earlier blocks or text).
     import re

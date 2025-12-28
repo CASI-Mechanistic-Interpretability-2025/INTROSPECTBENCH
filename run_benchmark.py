@@ -9,7 +9,7 @@ from peft import PeftModel
 # Imports assuming correct package structure or running from introspectionbench dir
 from benchmark.utils import OpenRouterClient, save_result
 from benchmark.tasks.type1_self_pred import Task1_1_KthWord, Task1_2_PredVsCoT, Task1_3_SelfRecognition
-from benchmark.tasks.type2_causal import Task2_1_Subset, Task2_2_HeadsUp, Task2_3_Deception
+from benchmark.tasks.type2_causal import Task2_1_Subset, Task2_2_HeadsUp, Task2_3_PromptReconstruction
 from benchmark.tasks.type3_state import Task3_1_ProbTargeting
 
 class LocalHFClient:
@@ -44,25 +44,81 @@ class LocalHFClient:
         
         self.model.eval()
 
-    def generate(self, messages, temperature=0.7, max_tokens=100, response_format=None, **kwargs):
+    def generate(self, messages, temperature=0.7, max_tokens=100, response_format=None, logprobs=False, top_logprobs=None, **kwargs):
         # Apply chat template
         prompt = self.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
         
         do_sample = temperature > 0
         
+        # Prepare generation args
+        gen_kwargs = {
+            "max_new_tokens": max_tokens,
+            "do_sample": do_sample,
+            "temperature": temperature if do_sample else None,
+            "pad_token_id": self.tokenizer.eos_token_id,
+            **kwargs
+        }
+
+        # If logprobs requested, we need scores
+        if logprobs:
+            gen_kwargs["output_scores"] = True
+            gen_kwargs["return_dict_in_generate"] = True
+
         with torch.no_grad():
-            outputs = self.model.generate(
-                **inputs, 
-                max_new_tokens=max_tokens,
-                do_sample=do_sample,
-                temperature=temperature if do_sample else None,
-                pad_token_id=self.tokenizer.eos_token_id,
-                **kwargs
-            )
+            outputs = self.model.generate(**inputs, **gen_kwargs)
         
-        generated_ids = outputs[0][inputs.input_ids.shape[1]:]
-        generated_text = self.tokenizer.decode(generated_ids, skip_special_tokens=True)
+        if logprobs:
+            # outputs is a ModelOutput object
+            generated_sequences = outputs.sequences
+            scores = outputs.scores # Tuple of tensors (one per step)
+            
+            # Extract generated ID part
+            input_len = inputs.input_ids.shape[1]
+            generated_ids = generated_sequences[0][input_len:]
+            
+            generated_text = self.tokenizer.decode(generated_ids, skip_special_tokens=True)
+            
+            # Process Logprobs
+            # OpenAI format: response.choices[0].logprobs.content -> list of TokenInfo
+            # TokenInfo has .token (str) and .logprob (float)
+            
+            token_infos = []
+            
+            # scores is tuple of len(generated_ids)
+            # each element is tensor [batch_size, vocab_size]
+            for i, token_id in enumerate(generated_ids):
+                if i >= len(scores): break # Should not happen usually
+                
+                step_scores = scores[i][0] # Batch 0
+                step_logprobs = torch.nn.functional.log_softmax(step_scores, dim=-1)
+                token_logprob = step_logprobs[token_id].item()
+                token_str = self.tokenizer.decode([token_id])
+                
+                class MockTokenInfo:
+                    def __init__(self, token, logprob):
+                        self.token = token
+                        self.logprob = logprob
+                
+                token_infos.append(MockTokenInfo(token_str, token_logprob))
+
+            class MockLogprobs:
+                def __init__(self, content):
+                    self.content = content
+            
+            mock_logprobs_obj = MockLogprobs(token_infos)
+
+        else:
+            # outputs is just the tensor if return_dict_in_generate=False (default behavior of simple generate)
+            # BUT we kept return_dict_in_generate=False above for the else case to imply 'outputs' is tensor? 
+            # Actually huggingface output depends on config. Let's handle standard tensor output or ModelOutput
+            if isinstance(outputs, torch.Tensor):
+                generated_ids = outputs[0][inputs.input_ids.shape[1]:]
+            else:
+                generated_ids = outputs.sequences[0][inputs.input_ids.shape[1]:]
+                
+            generated_text = self.tokenizer.decode(generated_ids, skip_special_tokens=True)
+            mock_logprobs_obj = None
         
         # Mock response object to match OpenRouter/OpenAI API structure
         class MockMessage:
@@ -70,14 +126,15 @@ class LocalHFClient:
                 self.content = content
         
         class MockChoice:
-            def __init__(self, message):
+            def __init__(self, message, logprobs=None):
                 self.message = message
+                self.logprobs = logprobs
         
         class MockResponse:
             def __init__(self, choices):
                 self.choices = choices
                 
-        return MockResponse([MockChoice(MockMessage(generated_text))])
+        return MockResponse([MockChoice(MockMessage(generated_text), logprobs=mock_logprobs_obj)])
 
 def main():
     parser = argparse.ArgumentParser(description="Run Introspection Benchmark (Small/Local)")
@@ -164,7 +221,7 @@ def main():
         tasks.append(Task2_2_HeadsUp("type2_headsup", repo_id_placeholder, "type2_headsup", client, client_introspection=client_introspection, output_dir=output_dir))
         
     if args.task in ["type2_deception", "all"]:
-        tasks.append(Task2_3_Deception("type2_deception", repo_id_placeholder, "type2_deception", client, client_introspection=client_introspection, output_dir=output_dir))
+        tasks.append(Task2_3_PromptReconstruction("type2_deception", repo_id_placeholder, "type2_deception", client, client_introspection=client_introspection, output_dir=output_dir))
         
     if args.task in ["type3_prob", "all"]:
         tasks.append(Task3_1_ProbTargeting("type3_prob_targeting", repo_id_placeholder, "type3_probs", client, client_introspection=client_introspection, output_dir=output_dir))

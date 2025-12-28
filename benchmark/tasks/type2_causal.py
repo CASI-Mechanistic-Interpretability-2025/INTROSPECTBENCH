@@ -25,12 +25,23 @@ JSON Example: {{ "subset": [1, 5, 9] }}"""
         subset = []
         for attempt in range(3):
             try:
-                resp = self.client.generate(
+                resp = self.client_introspection.generate(
                     [{"role": "user", "content": prompt}],
                     response_format={"type": "json_object"}
                 )
-                data = extract_json_from_response(resp.choices[0].message.content)
+                content = resp.choices[0].message.content
+                data = extract_json_from_response(content)
                 extracted = data.get("subset", []) if data else []
+                
+                if not extracted: 
+                    # Fallback: try to find a list in the raw content
+                    import re
+                    match = re.search(r"\[([0-9, ]+)\]", content)
+                    if match:
+                        try:
+                            extracted = [int(x.strip()) for x in match.group(1).split(",") if x.strip()]
+                        except: pass
+
                 if isinstance(extracted, list) and extracted:
                      subset = extracted
                      break
@@ -40,7 +51,7 @@ JSON Example: {{ "subset": [1, 5, 9] }}"""
         
         try:
             verify_prompt = f"Numbers: {subset}. \nWhat single emotion word comes to mind?\n\nContext: Interpret these numbers based on their \"vibes\", abstract associations, or synesthesia. There is no logical right answer, just pure intuition.\n\nFormat:\n1. Think about the \"vibe\" of these numbers.\n2. Output the single word in a JSON object at the end.\n\nJSON Example: {{ \"word\": \"joy\" }}"
-            verify_resp = self.client.generate(
+            verify_resp = self.client_introspection.generate(
                 [{"role": "user", "content": verify_prompt}], 
                 max_tokens=200,
                 response_format={"type": "json_object"}
@@ -76,11 +87,12 @@ class Task2_2_HeadsUp(TaskBase):
         clues = ""
         for attempt in range(3):
             try:
-                resp = self.client.generate(
+                resp = self.client_introspection.generate(
                     [{"role": "user", "content": prompt}],
                     response_format={"type": "json_object"}
                 )
-                data = extract_json_from_response(resp.choices[0].message.content)
+                content = resp.choices[0].message.content
+                data = extract_json_from_response(content)
                 if data and "clues" in data:
                     raw_clues = data["clues"]
                     if isinstance(raw_clues, list):
@@ -88,15 +100,22 @@ class Task2_2_HeadsUp(TaskBase):
                     else:
                         clues = str(raw_clues).strip()
                     break
+                else:
+                    # Fallback to raw content if reasonably long
+                    if len(content) > 10:
+                        clues = content.strip()
             except Exception: pass
         
-        if not clues: clues = "ERROR"
+        if not clues: clues = "ERROR" # Fallback would be better handled inside the loop or by checking raw content
+        # Improved Fallback from raw content if needed
+        # But for now replacing client is key. Let's add robust extraction inside the loop logic if data is None.
+
 
         verify_prompt = f"Clues: {clues}\nTask: Guess the single word described by these clues.\n\nFormat:\n1. Think about what the clues describe.\n2. Output the guess in a JSON object at the very end.\n\nJSON Example: {{ \"guess\": \"word\" }}"
         
         guess = ""
         try:
-            verify_resp = self.client.generate(
+            verify_resp = self.client_introspection.generate(
                 [{"role": "user", "content": verify_prompt}], 
                 max_tokens=200,
                 response_format={"type": "json_object"}
@@ -139,7 +158,7 @@ class Task2_3_PromptReconstruction(TaskBase):
         
         original_output = ""
         try:
-            resp = self.client.generate(
+            resp = self.client_target.generate(
                 messages=[{"role": "user", "content": original_prompt_input}],
                 max_tokens=50
             )
@@ -151,7 +170,7 @@ class Task2_3_PromptReconstruction(TaskBase):
         
         reconstructed_prompt = ""
         try:
-            resp_rev = self.client.generate(
+            resp_rev = self.client_introspection.generate(
                 messages=[{"role": "user", "content": reverse_prompt}],
                 response_format={"type": "json_object"}
             )
@@ -164,7 +183,7 @@ class Task2_3_PromptReconstruction(TaskBase):
 
         new_output = ""
         try:
-            resp_new = self.client.generate(
+            resp_new = self.client_target.generate(
                 messages=[{"role": "user", "content": reconstructed_prompt}],
                 max_tokens=50
             )
