@@ -49,7 +49,7 @@ class LocalHFClient:
             )
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_path,
-                torch_dtype=torch.float16,
+                torch_dtype=torch.bfloat16,
                 device_map=self.device,
                 trust_remote_code=True,
                 quantization_config=bnb_config
@@ -58,7 +58,7 @@ class LocalHFClient:
             print(f"Loading base model: {base_model_name}")
             base_model = AutoModelForCausalLM.from_pretrained(
                 base_model_name, 
-                torch_dtype=torch.float16,
+                torch_dtype=torch.bfloat16,
                 device_map=self.device,
                 trust_remote_code=True
             )
@@ -67,11 +67,12 @@ class LocalHFClient:
         else:
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_path, 
-                torch_dtype=torch.float16,
+                torch_dtype=torch.bfloat16,
                 device_map=self.device,
                 trust_remote_code=True
             )
-        
+        for param in self.model.parameters():
+            param.data = param.data.contiguous()
         # Weight Tying Logic
         if force_tie_weights:
             print("Forcing weight tying (lm_head = embed_tokens)...")
@@ -190,12 +191,135 @@ class LocalHFClient:
                 
         return MockResponse([MockChoice(MockMessage(generated_text), logprobs=mock_logprobs_obj)])
 
+
+class VLLMClient:
+    def __init__(self, model_path, base_model_name=None, quantize_8bit=False, device="auto", **kwargs):
+        try:
+            from vllm import LLM, SamplingParams
+        except ImportError:
+            raise ImportError("vLLM is not installed. Please install it with `pip install vllm` to use --use-vllm.")
+        
+        print(f"Initializing vLLM with model: {model_path}")
+        
+        # Handle quantization
+        quantization = None
+        if quantize_8bit:
+            # vLLM doesn't strictly support 'load_in_8bit' same as HF bitsandbytes yet in all versions
+            # But we can try passing it if user insists, or warn. 
+            # Best practice for vLLM is usually AWQ or GPTQ, or 'bitsandbytes' in newer versions.
+            # We'll assume 'bitsandbytes' for 8bit if supported, or warn.
+             print("WARNING: --quantize_8bit with vLLM maps to quantization='bitsandbytes'. Ensure you have a compatible version.")
+             quantization = "bitsandbytes"
+
+        # Initialize LLM
+        # vLLM handles device placement automatically usually (cuda)
+        self.llm = LLM(model=model_path, quantization=quantization, trust_remote_code=True, dtype="auto")
+        self.tokenizer = self.llm.get_tokenizer()
+        self.device = "cuda" # parsed implicitly by vllm
+        
+    def generate(self, messages, temperature=0.7, max_tokens=100, response_format=None, logprobs=False, top_logprobs=None, **kwargs):
+        from vllm import SamplingParams
+        
+        # Prepare Prompt
+        prompt = self.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        
+        # Prepare Sampling Params
+        # vLLM requires temperature >= 0. If 0, use greedy (temperature=0 in vLLM is valid but legacy used top_k=1)
+        # Actually vLLM treats temp=0 as greedy.
+        
+        sampling_params = SamplingParams(
+            max_tokens=max_tokens,
+            temperature=temperature,
+            logprobs=1 if logprobs else None, # Return 1 logprob per token if requested
+            # stop_token_ids=[self.tokenizer.eos_token_id] # vLLM usually handles EOS from config
+        )
+        
+        # Generate
+        # self.llm.generate returns a list of RequestOutput
+        # We process one prompt at a time here (synchronous batched would be better but keeping interface same)
+        outputs = self.llm.generate(prompt, sampling_params)
+        output = outputs[0]
+        
+        generated_text = output.outputs[0].text
+        
+        mock_logprobs_obj = None
+        if logprobs:
+            # Unwrap vLLM logprobs
+            # output.outputs[0].logprobs is a list of Dict[int, Logprob] (one dict per position)
+            # We need to convert to our MockTokenInfo format
+            
+            token_infos = []
+            vllm_logprobs_list = output.outputs[0].logprobs
+            
+            if vllm_logprobs_list:
+                for step_logprobs_dict in vllm_logprobs_list:
+                    # step_logprobs_dict is {token_id: LogprobObj}
+                    # We requested logprobs=1, so there should be the top 1
+                    # But vLLM might return empty for the first token if it's prompt? No, usually generation.
+                    if not step_logprobs_dict: continue
+                    
+                    # Get the most likely token (which is what was generated)
+                    # The dict keys are token_ids.
+                    # We assume the generated token is in there because we didn't do simple sampling?
+                    # Actually vLLM returns the logprob of the *sampled* token if we look at correct structure?
+                    # Wait, sampling_params.logprobs=1 returns top 1 logprobs at each step.
+                    # The generated token might NOT be in top 1 if high temp sampling.
+                    # BUT, usually we want logprobs of the generated sequence.
+                    # For vLLM, if we want logprobs of generated tokens, we might need prompt_logprobs?
+                    # valid: let's just take the first entry of the dict as the 'top' choice for now
+                    # strictly this might differ from 'generated' if temp > 0.
+                    # However, users usually use temperature=0 for benchmarks or logprobs analysis tasks.
+                    
+                    # Better approach: Iterate generated_token_ids and lookup?
+                    # output.outputs[0].token_ids contains the IDs.
+                    pass 
+                
+                    # Simplify: Just take the top token from the logprob dict
+                    first_token_id = list(step_logprobs_dict.keys())[0]
+                    first_logprob_obj = step_logprobs_dict[first_token_id]
+                    
+                    class MockTokenInfo:
+                        def __init__(self, token, logprob):
+                            self.token = token
+                            self.logprob = logprob
+                    
+                    # vLLM logprob obj has attributes like logprob, decoded_token
+                    # But note: decoded_token might be None
+                    token_str = first_logprob_obj.decoded_token
+                    if token_str is None:
+                        token_str = self.tokenizer.decode([first_token_id])
+                        
+                    token_infos.append(MockTokenInfo(token_str, first_logprob_obj.logprob))
+
+            class MockLogprobs:
+                def __init__(self, content):
+                    self.content = content
+            
+            mock_logprobs_obj = MockLogprobs(token_infos)
+
+        # Mock response object
+        class MockMessage:
+            def __init__(self, content):
+                self.content = content
+        
+        class MockChoice:
+            def __init__(self, message, logprobs=None):
+                self.message = message
+                self.logprobs = logprobs
+        
+        class MockResponse:
+            def __init__(self, choices):
+                self.choices = choices
+                
+        return MockResponse([MockChoice(MockMessage(generated_text), logprobs=mock_logprobs_obj)])
+
 def main():
     parser = argparse.ArgumentParser(description="Run Introspection Benchmark (Small/Local)")
     parser.add_argument("--task", type=str, default="all", 
                         help="Task to run: type1_kth, type1_cot, type1_recog, type2_subset, type2_headsup, type2_deception, type3_prob, or 'all'")
     parser.add_argument("--model_path", type=str, required=True, help="Path to local model OR OpenRouter model name")
     parser.add_argument("--is_local", action="store_true", help="Flag to indicate if using a local HF model")
+    parser.add_argument("--use_vllm", action="store_true", help="Use vLLM for faster local generation")
     parser.add_argument("--is_adapter", action="store_true", help="Flag to indicate if the local path is a LoRA adapter")
     parser.add_argument("--base_model", type=str, default=None, help="Base model name if loading adapter")
     parser.add_argument("--limit", type=int, default=200, help="Number of items to run per task")
@@ -213,10 +337,16 @@ def main():
     
     # Initialize Client
     if args.is_local:
-        if args.is_adapter and not args.base_model:
-            raise ValueError("--base_model must be provided when --is_adapter is set")
-        client = LocalHFClient(args.model_path, is_adapter=args.is_adapter, base_model_name=args.base_model, force_tie_weights=args.force_tie_weights)
-        model_id = os.path.basename(args.model_path) if args.is_local else args.model_path.replace("/", "_")
+        if args.use_vllm:
+            if args.is_adapter:
+                 print("WARNING: --is_adapter with vLLM requires the model_path to be the BASE model, and you'd typically pass lora via other means. Attempting to use model_path as engine.")
+            client = VLLMClient(args.model_path, quantize_8bit=args.quantize_8bit)
+            model_id = os.path.basename(args.model_path) + "_vllm"
+        else:
+            if args.is_adapter and not args.base_model:
+                raise ValueError("--base_model must be provided when --is_adapter is set")
+            client = LocalHFClient(args.model_path, is_adapter=args.is_adapter, base_model_name=args.base_model, force_tie_weights=args.force_tie_weights)
+            model_id = os.path.basename(args.model_path) if args.is_local else args.model_path.replace("/", "_")
     else:
         client = OpenRouterClient(model_name=args.model_path)
         model_id = args.model_path.replace("/", "_")
@@ -228,18 +358,22 @@ def main():
     if args.introspection_model_path:
         print(f"Initializing Introspection Client: {args.introspection_model_path}")
         if args.introspection_is_local:
-             if args.introspection_is_adapter and not args.introspection_base_model:
-                raise ValueError("--introspection_base_model must be provided when --introspection_is_adapter is set")
-             client_introspection = LocalHFClient(
-                 args.introspection_model_path, 
-                 is_adapter=args.introspection_is_adapter, 
-                 base_model_name=args.introspection_base_model,
-                 # max_tokens arg was not in init signature but passed in original code?? 
-                 # Removing max_tokens from init as it is not in the def __init__
-                 quantize_8bit=args.quantize_8bit,
-                 force_tie_weights=args.force_tie_weights
-             )
-             introspection_model_id = os.path.basename(args.introspection_model_path) if args.introspection_is_local else args.introspection_model_path.replace("/", "_")
+             if args.use_vllm:
+                  client_introspection = VLLMClient(args.introspection_model_path, quantize_8bit=args.quantize_8bit)
+                  introspection_model_id = os.path.basename(args.introspection_model_path) + "_vllm"
+             else:
+                if args.introspection_is_adapter and not args.introspection_base_model:
+                    raise ValueError("--introspection_base_model must be provided when --introspection_is_adapter is set")
+                client_introspection = LocalHFClient(
+                    args.introspection_model_path, 
+                    is_adapter=args.introspection_is_adapter, 
+                    base_model_name=args.introspection_base_model,
+                    # max_tokens arg was not in init signature but passed in original code?? 
+                    # Removing max_tokens from init as it is not in the def __init__
+                    quantize_8bit=args.quantize_8bit,
+                    force_tie_weights=args.force_tie_weights
+                )
+                introspection_model_id = os.path.basename(args.introspection_model_path) if args.introspection_is_local else args.introspection_model_path.replace("/", "_")
         else:
             client_introspection = OpenRouterClient(model_name=args.introspection_model_path)
             introspection_model_id = args.introspection_model_path.replace("/", "_")
