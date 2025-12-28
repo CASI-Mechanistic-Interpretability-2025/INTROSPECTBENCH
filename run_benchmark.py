@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import time
 import torch
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -13,7 +14,7 @@ from benchmark.tasks.type2_causal import Task2_1_Subset, Task2_2_HeadsUp, Task2_
 from benchmark.tasks.type3_state import Task3_1_ProbTargeting
 
 class LocalHFClient:
-    def __init__(self, model_path, is_adapter=False, base_model_name=None, quantize_8bit=False, device="auto"):
+    def __init__(self, model_path, is_adapter=False, base_model_name=None, quantize_8bit=False, device="auto", force_tie_weights=False):
         # Handle cases where user points to a file instead of dir
         if os.path.isfile(model_path):
             print(f"Provided path is a file, using parent directory: {os.path.dirname(model_path)}")
@@ -29,6 +30,12 @@ class LocalHFClient:
             self.device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
         
         print(f"Using device: {self.device}")
+        if self.device == "cuda":
+            print(f"  CUDA Device Count: {torch.cuda.device_count()}")
+            print(f"  Current Device: {torch.cuda.current_device()}")
+            print(f"  Device Name: {torch.cuda.get_device_name(0)}")
+        elif self.device == "cpu":
+             print("  WARNING: Running on CPU. This will be very slow.")
 
         # Load Tokenizer
         tokenizer_path = base_model_name if is_adapter else model_path
@@ -64,7 +71,17 @@ class LocalHFClient:
                 device_map=self.device,
                 trust_remote_code=True
             )
-        self.model.tie_weights()
+        
+        # Weight Tying Logic
+        if force_tie_weights:
+            print("Forcing weight tying (lm_head = embed_tokens)...")
+            try:
+                self.model.lm_head.weight = self.model.model.embed_tokens.weight
+                self.model.tie_weights()
+            except Exception as e:
+                print(f"Failed to force tie weights: {e}")
+        else:
+            self.model.tie_weights()
         
         self.model.eval()
 
@@ -89,8 +106,22 @@ class LocalHFClient:
             gen_kwargs["output_scores"] = True
             gen_kwargs["return_dict_in_generate"] = True
 
+        start_time = time.time()
         with torch.no_grad():
             outputs = self.model.generate(**inputs, **gen_kwargs)
+        end_time = time.time()
+        
+        # Calculate speed
+        duration = end_time - start_time
+        num_generated_tokens = 0
+        if isinstance(outputs, torch.Tensor):
+             num_generated_tokens = outputs.shape[1] - inputs.input_ids.shape[1]
+        elif hasattr(outputs, 'sequences'):
+             num_generated_tokens = outputs.sequences.shape[1] - inputs.input_ids.shape[1]
+            
+        if duration > 0:
+            speed = num_generated_tokens / duration
+            print(f"Generation took {duration:.2f}s for {num_generated_tokens} tokens ({speed:.2f} t/s)")
         
         if logprobs:
             # outputs is a ModelOutput object
@@ -172,6 +203,7 @@ def main():
     parser.add_argument("--output_dir", type=str, default="results_experiments", help="Directory to save results")
     parser.add_argument("--max_tokens", type=int, default=100, help="Max tokens to generate")
     parser.add_argument("--quantize_8bit", action="store_true", help="Flag to indicate if the local path is a LoRA adapter")
+    parser.add_argument("--force_tie_weights", action="store_true", help="Force tying variables")
     # Introspection Model Arguments
     parser.add_argument("--introspection_model_path", type=str, default=None, help="Path to introspection model (Guesser). Defaults to target model if not set.")
     parser.add_argument("--introspection_is_local", action="store_true", help="Flag if introspection model is local")
@@ -184,7 +216,7 @@ def main():
     if args.is_local:
         if args.is_adapter and not args.base_model:
             raise ValueError("--base_model must be provided when --is_adapter is set")
-        client = LocalHFClient(args.model_path, is_adapter=args.is_adapter, base_model_name=args.base_model)
+        client = LocalHFClient(args.model_path, is_adapter=args.is_adapter, base_model_name=args.base_model, force_tie_weights=args.force_tie_weights)
         model_id = os.path.basename(args.model_path) if args.is_local else args.model_path.replace("/", "_")
     else:
         client = OpenRouterClient(model_name=args.model_path)
@@ -203,8 +235,10 @@ def main():
                  args.introspection_model_path, 
                  is_adapter=args.introspection_is_adapter, 
                  base_model_name=args.introspection_base_model,
-                 max_tokens=args.max_tokens,
-                 quantize_8bit=args.quantize_8bit
+                 # max_tokens arg was not in init signature but passed in original code?? 
+                 # Removing max_tokens from init as it is not in the def __init__
+                 quantize_8bit=args.quantize_8bit,
+                 force_tie_weights=args.force_tie_weights
              )
              introspection_model_id = os.path.basename(args.introspection_model_path) if args.introspection_is_local else args.introspection_model_path.replace("/", "_")
         else:
