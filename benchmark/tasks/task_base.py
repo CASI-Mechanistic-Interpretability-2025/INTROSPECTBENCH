@@ -9,13 +9,13 @@ from tqdm import tqdm
 logger = logging.getLogger("IntrospectionBenchmark")
 
 class TaskBase(ABC):
-    def __init__(self, task_name, dataset_name, dataset_split, client_target, client_introspection=None, output_dir="results"):
+    def __init__(self, task_name, dataset_name, dataset_split, client_target, client_introspection=None, output_dir="results", max_tokens=None):
         self.task_name = task_name
         self.client_target = client_target
         self.client_introspection = client_introspection if client_introspection else client_target
         self.output_dir = output_dir
         self.dataset_split = dataset_split
-        
+        self.max_tokens = max_tokens
         self.dataset = self.load_data(dataset_name, dataset_split)
         self.results = []
         self.results_lock = Lock()

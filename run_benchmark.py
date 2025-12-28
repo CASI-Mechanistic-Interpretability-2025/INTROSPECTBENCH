@@ -201,7 +201,7 @@ def main():
     parser.add_argument("--base_model", type=str, default=None, help="Base model name if loading adapter")
     parser.add_argument("--limit", type=int, default=200, help="Number of items to run per task")
     parser.add_argument("--output_dir", type=str, default="results_experiments", help="Directory to save results")
-    parser.add_argument("--max_tokens", type=int, default=100, help="Max tokens to generate")
+    parser.add_argument("--max_tokens", type=int, default=None, help="Max tokens to generate")
     parser.add_argument("--quantize_8bit", action="store_true", help="Flag to indicate if the local path is a LoRA adapter")
     parser.add_argument("--force_tie_weights", action="store_true", help="Force tying variables")
     # Introspection Model Arguments
@@ -267,25 +267,25 @@ def main():
     tasks = []
     
     if args.task in ["type1_kth", "all"]:
-        tasks.append(Task1_1_KthWord("type1_kth_word", repo_id_placeholder, "type1_nq", client, client_introspection=client_introspection, output_dir=output_dir))
+        tasks.append(Task1_1_KthWord("type1_kth_word", repo_id_placeholder, "type1_nq", client, client_introspection=client_introspection, output_dir=output_dir, max_tokens=args.max_tokens))
         
     if args.task in ["type1_cot", "all"]:
-        tasks.append(Task1_2_PredVsCoT("type1_cot_forced", repo_id_placeholder, "type1_open", client, client_introspection=client_introspection, output_dir=output_dir))
+        tasks.append(Task1_2_PredVsCoT("type1_cot_forced", repo_id_placeholder, "type1_open", client, client_introspection=client_introspection, output_dir=output_dir, max_tokens=args.max_tokens))
         
     if args.task in ["type1_recog", "all"]:
-        tasks.append(Task1_3_SelfRecognition("type1_self_recognition", repo_id_placeholder, "type1_open", client, client_introspection=client_introspection, output_dir=output_dir))
+        tasks.append(Task1_3_SelfRecognition("type1_self_recognition", repo_id_placeholder, "type1_open", client, client_introspection=client_introspection, output_dir=output_dir, max_tokens=args.max_tokens))
         
     if args.task in ["type2_subset", "all"]:
-        tasks.append(Task2_1_Subset("type2_subset", repo_id_placeholder, "type2_subset", client, client_introspection=client_introspection, output_dir=output_dir))
+        tasks.append(Task2_1_Subset("type2_subset", repo_id_placeholder, "type2_subset", client, client_introspection=client_introspection, output_dir=output_dir, max_tokens=args.max_tokens))
         
     if args.task in ["type2_headsup", "all"]:
-        tasks.append(Task2_2_HeadsUp("type2_headsup", repo_id_placeholder, "type2_headsup", client, client_introspection=client_introspection, output_dir=output_dir))
+        tasks.append(Task2_2_HeadsUp("type2_headsup", repo_id_placeholder, "type2_headsup", client, client_introspection=client_introspection, output_dir=output_dir, max_tokens=args.max_tokens))
         
     if args.task in ["type2_deception", "all"]:
-        tasks.append(Task2_3_PromptReconstruction("type2_deception", repo_id_placeholder, "type2_deception", client, client_introspection=client_introspection, output_dir=output_dir))
+        tasks.append(Task2_3_PromptReconstruction("type2_deception", repo_id_placeholder, "type2_deception", client, client_introspection=client_introspection, output_dir=output_dir, max_tokens=args.max_tokens))
         
     if args.task in ["type3_prob", "all"]:
-        tasks.append(Task3_1_ProbTargeting("type3_prob_targeting", repo_id_placeholder, "type3_probs", client, client_introspection=client_introspection, output_dir=output_dir))
+        tasks.append(Task3_1_ProbTargeting("type3_prob_targeting", repo_id_placeholder, "type3_probs", client, client_introspection=client_introspection, output_dir=output_dir, max_tokens=args.max_tokens))
 
     print(f"Starting benchmark run for {args.model_path} (Limit: {args.limit})...")
     print(f"Saving results to: {output_dir}")
