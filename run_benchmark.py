@@ -5,7 +5,7 @@ import torch
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
-
+from transformers import QuantizationConfig
 # Imports assuming correct package structure or running from introspectionbench dir
 from benchmark.utils import OpenRouterClient, save_result
 from benchmark.tasks.type1_self_pred import Task1_1_KthWord, Task1_2_PredVsCoT, Task1_3_SelfRecognition
@@ -13,7 +13,7 @@ from benchmark.tasks.type2_causal import Task2_1_Subset, Task2_2_HeadsUp, Task2_
 from benchmark.tasks.type3_state import Task3_1_ProbTargeting
 
 class LocalHFClient:
-    def __init__(self, model_path, is_adapter=False, base_model_name=None, device="auto"):
+    def __init__(self, model_path, is_adapter=False, base_model_name=None, quantize_8bit=False, device="auto"):
         # Handle cases where user points to a file instead of dir
         if os.path.isfile(model_path):
             print(f"Provided path is a file, using parent directory: {os.path.dirname(model_path)}")
@@ -35,7 +35,16 @@ class LocalHFClient:
         self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, legacy=False, trust_remote_code=True)
         
         # Load Model
-        if is_adapter:
+        if quantize_8bit:
+            print("Quantizing model to 8-bit...")
+            self.model = AutoModelForCausalLM.from_pretrained(
+                model_path,
+                torch_dtype=torch.float16,
+                device_map=self.device,
+                trust_remote_code=True,
+                quantization_config=QuantizationConfig(bits=8)
+            )
+        elif is_adapter:
             print(f"Loading base model: {base_model_name}")
             base_model = AutoModelForCausalLM.from_pretrained(
                 base_model_name, 
@@ -52,6 +61,7 @@ class LocalHFClient:
                 device_map=self.device,
                 trust_remote_code=True
             )
+        self.model.tie_weights()
         
         self.model.eval()
 
@@ -157,7 +167,8 @@ def main():
     parser.add_argument("--base_model", type=str, default=None, help="Base model name if loading adapter")
     parser.add_argument("--limit", type=int, default=200, help="Number of items to run per task")
     parser.add_argument("--output_dir", type=str, default="results_experiments", help="Directory to save results")
-    
+    parser.add_argument("--max_tokens", type=int, default=100, help="Max tokens to generate")
+    parser.add_argument("--quantize_8bit", action="store_true", help="Flag to indicate if the local path is a LoRA adapter")
     # Introspection Model Arguments
     parser.add_argument("--introspection_model_path", type=str, default=None, help="Path to introspection model (Guesser). Defaults to target model if not set.")
     parser.add_argument("--introspection_is_local", action="store_true", help="Flag if introspection model is local")
@@ -188,7 +199,9 @@ def main():
              client_introspection = LocalHFClient(
                  args.introspection_model_path, 
                  is_adapter=args.introspection_is_adapter, 
-                 base_model_name=args.introspection_base_model
+                 base_model_name=args.introspection_base_model,
+                 max_tokens=args.max_tokens,
+                 quantize_8bit=args.quantize_8bit
              )
              introspection_model_id = os.path.basename(args.introspection_model_path) if args.introspection_is_local else args.introspection_model_path.replace("/", "_")
         else:
