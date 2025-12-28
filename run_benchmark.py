@@ -5,7 +5,7 @@ import torch
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel
-from transformers import QuantizationConfig
+from transformers import BitsAndBytesConfig
 # Imports assuming correct package structure or running from introspectionbench dir
 from benchmark.utils import OpenRouterClient, save_result
 from benchmark.tasks.type1_self_pred import Task1_1_KthWord, Task1_2_PredVsCoT, Task1_3_SelfRecognition
@@ -37,12 +37,15 @@ class LocalHFClient:
         # Load Model
         if quantize_8bit:
             print("Quantizing model to 8-bit...")
+            bnb_config = BitsAndBytesConfig(
+                load_in_8bit=True
+            )
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_path,
                 torch_dtype=torch.float16,
                 device_map=self.device,
                 trust_remote_code=True,
-                quantization_config=QuantizationConfig(bits=8)
+                quantization_config=bnb_config
             )
         elif is_adapter:
             print(f"Loading base model: {base_model_name}")
