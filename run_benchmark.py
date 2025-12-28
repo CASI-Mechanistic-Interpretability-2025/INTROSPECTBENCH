@@ -14,6 +14,15 @@ from benchmark.tasks.type3_state import Task3_1_ProbTargeting
 
 class LocalHFClient:
     def __init__(self, model_path, is_adapter=False, base_model_name=None, device="auto"):
+        # Handle cases where user points to a file instead of dir
+        if os.path.isfile(model_path):
+            print(f"Provided path is a file, using parent directory: {os.path.dirname(model_path)}")
+            model_path = os.path.dirname(model_path)
+        
+        # Resolve to abspath if it exists locally
+        if os.path.exists(model_path):
+            model_path = os.path.abspath(model_path)
+            
         print(f"Loading local model from {model_path}...")
         self.device = device
         if device == "auto":
@@ -23,7 +32,7 @@ class LocalHFClient:
 
         # Load Tokenizer
         tokenizer_path = base_model_name if is_adapter else model_path
-        self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, legacy=False)
+        self.tokenizer = AutoTokenizer.from_pretrained(tokenizer_path, legacy=False, trust_remote_code=True)
         
         # Load Model
         if is_adapter:
@@ -31,7 +40,8 @@ class LocalHFClient:
             base_model = AutoModelForCausalLM.from_pretrained(
                 base_model_name, 
                 torch_dtype=torch.float16,
-                device_map=self.device
+                device_map=self.device,
+                trust_remote_code=True
             )
             print(f"Loading adapter: {model_path}")
             self.model = PeftModel.from_pretrained(base_model, model_path)
@@ -39,7 +49,8 @@ class LocalHFClient:
             self.model = AutoModelForCausalLM.from_pretrained(
                 model_path, 
                 torch_dtype=torch.float16,
-                device_map=self.device
+                device_map=self.device,
+                trust_remote_code=True
             )
         
         self.model.eval()
