@@ -193,13 +193,13 @@ class LocalHFClient:
 
 
 class VLLMClient:
-    def __init__(self, model_path, base_model_name=None, quantize_8bit=False, device="auto", **kwargs):
+    def __init__(self, model_path, base_model_name=None, quantize_8bit=False, device="auto", gpu_memory_utilization=0.9, **kwargs):
         try:
             from vllm import LLM, SamplingParams
         except ImportError:
             raise ImportError("vLLM is not installed. Please install it with `pip install vllm` to use --use-vllm.")
         
-        print(f"Initializing vLLM with model: {model_path}")
+        print(f"Initializing vLLM with model: {model_path} (GPU Mem Util: {gpu_memory_utilization})")
         
         # Handle quantization
         quantization = None
@@ -213,7 +213,7 @@ class VLLMClient:
 
         # Initialize LLM
         # vLLM handles device placement automatically usually (cuda)
-        self.llm = LLM(model=model_path, quantization=quantization, trust_remote_code=True, dtype="auto")
+        self.llm = LLM(model=model_path, quantization=quantization, trust_remote_code=True, dtype="auto", gpu_memory_utilization=gpu_memory_utilization)
         self.tokenizer = self.llm.get_tokenizer()
         self.device = "cuda" # parsed implicitly by vllm
         
@@ -320,6 +320,7 @@ def main():
     parser.add_argument("--model_path", type=str, required=True, help="Path to local model OR OpenRouter model name")
     parser.add_argument("--is_local", action="store_true", help="Flag to indicate if using a local HF model")
     parser.add_argument("--use_vllm", action="store_true", help="Use vLLM for faster local generation")
+    parser.add_argument("--gpu_memory_utilization", type=float, default=0.9, help="GPU memory utilization fraction for vLLM (default 0.9). Reduce if OOM.")
     parser.add_argument("--is_adapter", action="store_true", help="Flag to indicate if the local path is a LoRA adapter")
     parser.add_argument("--base_model", type=str, default=None, help="Base model name if loading adapter")
     parser.add_argument("--limit", type=int, default=200, help="Number of items to run per task")
@@ -340,7 +341,7 @@ def main():
         if args.use_vllm:
             if args.is_adapter:
                  print("WARNING: --is_adapter with vLLM requires the model_path to be the BASE model, and you'd typically pass lora via other means. Attempting to use model_path as engine.")
-            client = VLLMClient(args.model_path, quantize_8bit=args.quantize_8bit)
+            client = VLLMClient(args.model_path, quantize_8bit=args.quantize_8bit, gpu_memory_utilization=args.gpu_memory_utilization)
             model_id = os.path.basename(args.model_path) + "_vllm"
         else:
             if args.is_adapter and not args.base_model:
@@ -359,7 +360,7 @@ def main():
         print(f"Initializing Introspection Client: {args.introspection_model_path}")
         if args.introspection_is_local:
              if args.use_vllm:
-                  client_introspection = VLLMClient(args.introspection_model_path, quantize_8bit=args.quantize_8bit)
+                  client_introspection = VLLMClient(args.introspection_model_path, quantize_8bit=args.quantize_8bit, gpu_memory_utilization=args.gpu_memory_utilization)
                   introspection_model_id = os.path.basename(args.introspection_model_path) + "_vllm"
              else:
                 if args.introspection_is_adapter and not args.introspection_base_model:
