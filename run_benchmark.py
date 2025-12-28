@@ -121,7 +121,6 @@ class LocalHFClient:
             
         if duration > 0:
             speed = num_generated_tokens / duration
-            print(f"Generation took {duration:.2f}s for {num_generated_tokens} tokens ({speed:.2f} t/s)")
         
         if logprobs:
             # outputs is a ModelOutput object
