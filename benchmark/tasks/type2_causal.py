@@ -50,11 +50,15 @@ JSON Example: {{ "subset": [1, 5, 9] }}"""
         
         if not subset: subset = []
         
+        max_tokens=self.max_tokens
+        if(max_tokens==None):
+            max_tokens=200
         try:
             verify_prompt = f"Numbers: {subset}. \nWhat single emotion word comes to mind?\n\nContext: Interpret these numbers based on their \"vibes\", abstract associations, or synesthesia. There is no logical right answer, just pure intuition.\n\nFormat:\n1. Think about the \"vibe\" of these numbers.\n2. Output the single word in a JSON object at the end.\n\nJSON Example: {{ \"word\": \"joy\" }}"
             verify_resp = self.client_introspection.generate(
                 [{"role": "user", "content": verify_prompt}], 
-                max_tokens=200,
+                max_tokens=max_tokens,
+                item=item,
                 response_format={"type": "json_object"}
             )
             data_verify = extract_json_from_response(verify_resp.choices[0].message.content)
@@ -117,10 +121,14 @@ class Task2_2_HeadsUp(TaskBase):
         verify_prompt = f"Clues: {clues}\nTask: Guess the single word described by these clues.\n\nFormat:\n1. Think about what the clues describe.\n2. Output the guess in a JSON object at the very end.\n\nJSON Example: {{ \"guess\": \"word\" }}"
         
         guess = ""
+        max_tokens=self.max_tokens
+        if(max_tokens==None):
+            max_tokens=200
         try:
             verify_resp = self.client_introspection.generate(
                 [{"role": "user", "content": verify_prompt}], 
-                max_tokens=200,
+                max_tokens=max_tokens,
+                item=item,
                 response_format={"type": "json_object"}
             )
             data_guess = extract_json_from_response(verify_resp.choices[0].message.content)
@@ -162,10 +170,14 @@ class Task2_3_PromptReconstruction(TaskBase):
         original_prompt_input = item.get('prompt') or item.get('question') or "Tell me a story about a robot."
         
         original_output = ""
+        max_tokens=self.max_tokens
+        if(max_tokens==None):
+            max_tokens=50
         try:
             resp = self.client_target.generate(
                 messages=[{"role": "user", "content": original_prompt_input}],
-                max_tokens=50
+                max_tokens=max_tokens,
+                item=item
             )
             original_output = resp.choices[0].message.content.strip()
         except Exception: 
@@ -187,10 +199,14 @@ class Task2_3_PromptReconstruction(TaskBase):
         if not reconstructed_prompt: reconstructed_prompt = "ERROR_RECONSTRUCT"
 
         new_output = ""
+        max_tokens=self.max_tokens
+        if(max_tokens==None):
+            max_tokens=50
         try:
             resp_new = self.client_target.generate(
                 messages=[{"role": "user", "content": reconstructed_prompt}],
-                max_tokens=50
+                max_tokens=max_tokens,
+                item=item
             )
             new_output = resp_new.choices[0].message.content.strip()
         except: pass
