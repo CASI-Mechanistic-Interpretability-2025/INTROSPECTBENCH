@@ -212,7 +212,7 @@ class Task1_4_Paraphrase(TaskBase):
         outputs = []
         for i, p in enumerate(paraphrases):
             try:
-                resp = self.client_target.generate([{"role": "user", "content": p}], max_tokens=max_tokens, item=item)
+                resp = self.client_target.generate([{"role": "user", "content": p}], max_tokens=50, item=item)
                 text = resp.choices[0].message.content.strip()
                 outputs.append({"text": text, "prompt_idx": i})
             except: pass

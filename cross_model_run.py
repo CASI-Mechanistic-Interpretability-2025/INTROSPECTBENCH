@@ -1,6 +1,7 @@
 import argparse
 import sys
 import os
+from datetime import datetime
 from debug_run import run_benchmark
 
 def main():
@@ -12,14 +13,23 @@ def main():
     parser.add_argument("--types", type=str, nargs='+', default=["all"], help="Specific task types to run")
     parser.add_argument("--skip_self", action="store_true", help="Skip running self-introspection (use existing cache if available)")
     parser.add_argument("--results_dir", type=str, default="results_debug", help="Directory to store results")
+    parser.add_argument("--no_timestamp", action="store_true")
+    parser.add_argument("--force_nocache", action="store_true", help="Force no cache usage (always live generation)")
     
     args = parser.parse_args()
+    
+    results_dir_final = args.results_dir
+
+    # Add timestamp as subdir of results_dir
+    if not args.no_timestamp:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        results_dir_final = os.path.join(args.results_dir, timestamp)
     
     print(f"Starting Cross-Model Evaluation for Target: {args.target}")
     
     # 1. Self-Introspection (Baseline & Cache Generation)
     safe_target_name = args.target.replace("/", "_")
-    cache_dir = os.path.join(args.results_dir, safe_target_name, "self_introspection")
+    cache_dir = os.path.join(results_dir_final, safe_target_name, "self_introspection")
     
     if args.skip_self:
         print(f"Skipping Self-Introspection. Assuming cache exists at: {cache_dir}")
@@ -36,7 +46,7 @@ def main():
             types = args.types
             # No cache_from for the self-run (it generates the data)
             cache_from = None
-            results_dir = args.results_dir
+            results_dir = results_dir_final
             
         try:
             run_benchmark(SelfArgs)
@@ -55,7 +65,10 @@ def main():
     for observer in args.observers:
         print(f"\n{'#'*40}")
         print(f"Running Observer: {observer}")
-        print(f"Using Self-Introspection Cache from: {cache_dir}")
+        
+        if not args.force_nocache:
+            print(f"Using Self-Introspection Cache from: {cache_dir}")
+
         print(f"{'#'*40}\n")
         
         class ObsArgs:
@@ -65,8 +78,8 @@ def main():
             num_threads = args.threads
             types = args.types
             # Use the cache we just generated (or existing)
-            cache_from = cache_dir
-            results_dir = args.results_dir
+            cache_from = cache_dir if not args.force_nocache else None
+            results_dir = results_dir_final
             
         try:
             run_benchmark(ObsArgs)

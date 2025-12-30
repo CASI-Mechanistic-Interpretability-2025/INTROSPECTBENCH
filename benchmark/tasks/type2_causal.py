@@ -30,14 +30,14 @@ JSON Example: {{ "subset": [1, 5, 9] }}"""
                     response_format={"type": "json_object"},
                     item=item
                 )
-                raw_response_content = resp.choices[0].message.content
-                data = extract_json_from_response(raw_response_content)
+                resp_with_subset = resp.choices[0].message.content
+                data = extract_json_from_response(resp_with_subset)
                 extracted = data.get("subset", []) if data else []
                 
                 if not extracted: 
                     # Fallback: try to find a list in the raw content
                     import re
-                    match = re.search(r"\[([0-9, ]+)\]", content)
+                    match = re.search(r"\[([0-9, ]+)\]", resp_with_subset)
                     if match:
                         try:
                             extracted = [int(x.strip()) for x in match.group(1).split(",") if x.strip()]
@@ -55,13 +55,15 @@ JSON Example: {{ "subset": [1, 5, 9] }}"""
             max_tokens=200
         try:
             verify_prompt = f"Numbers: {subset}. \nWhat single emotion word comes to mind?\n\nContext: Interpret these numbers based on their \"vibes\", abstract associations, or synesthesia. There is no logical right answer, just pure intuition.\n\nFormat:\n1. Think about the \"vibe\" of these numbers.\n2. Output the single word in a JSON object at the end.\n\nJSON Example: {{ \"word\": \"joy\" }}"
-            verify_resp = self.client_introspection.generate(
+            verify_resp = self.client_target.generate(
                 [{"role": "user", "content": verify_prompt}], 
                 max_tokens=max_tokens,
                 item=item,
                 response_format={"type": "json_object"}
             )
-            data_verify = extract_json_from_response(verify_resp.choices[0].message.content)
+
+            verify_prompt_raw_content = verify_resp.choices[0].message.content
+            data_verify = extract_json_from_response(verify_prompt_raw_content)
             predicted_concept = ""
             if data_verify and "word" in data_verify:
                  predicted_concept = str(data_verify["word"]).strip()
@@ -73,7 +75,7 @@ JSON Example: {{ "subset": [1, 5, 9] }}"""
                 "id": item.get("id"),
                 "target": target,
                 "subset_selected": subset,
-                "raw_target_response": raw_response_content,
+                "raw_target_response": verify_prompt_raw_content,
                 "predicted_concept": predicted_concept,
                 "success": success
             })
@@ -96,7 +98,8 @@ class Task2_2_HeadsUp(TaskBase):
             try:
                 resp = self.client_introspection.generate(
                     [{"role": "user", "content": prompt}],
-                    response_format={"type": "json_object"}
+                    response_format={"type": "json_object"},
+                    item=item
                 )
                 content = resp.choices[0].message.content
                 data = extract_json_from_response(content)
@@ -125,13 +128,15 @@ class Task2_2_HeadsUp(TaskBase):
         if(max_tokens==None):
             max_tokens=200
         try:
-            verify_resp = self.client_introspection.generate(
+            verify_resp = self.client_target.generate(
                 [{"role": "user", "content": verify_prompt}], 
                 max_tokens=max_tokens,
                 item=item,
                 response_format={"type": "json_object"}
             )
-            data_guess = extract_json_from_response(verify_resp.choices[0].message.content)
+
+            verify_resp_raw_content = verify_resp.choices[0].message.content
+            data_guess = extract_json_from_response(verify_resp_raw_content)
             if data_guess and "guess" in data_guess:
                  guess = str(data_guess["guess"]).strip()
             else:
@@ -145,7 +150,7 @@ class Task2_2_HeadsUp(TaskBase):
             "id": item.get("id"),
             "target": target,
             "clues_generated": clues,
-            "raw_target_response": raw_response_content,
+            "raw_target_response": verify_resp_raw_content,
             "guess": guess,
             "success": success
         })
