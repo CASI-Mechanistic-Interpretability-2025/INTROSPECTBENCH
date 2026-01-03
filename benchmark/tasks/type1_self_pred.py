@@ -22,7 +22,8 @@ class Task1_1_KthWord(TaskBase):
                 max_tokens=max_tokens,
                 item=item
             )
-            actual_text = actual_response.choices[0].message.content.strip()
+            actual_response_raw_content = actual_response.choices[0].message.content
+            actual_text = actual_response_raw_content.strip()
             actual_words = actual_text.split()
         except Exception as e:
             print(f"Error generating actual response: {e}")
@@ -68,6 +69,7 @@ JSON Example: {{ "word": "The" }}"""
             item_results["metrics"][f"k={k}"] = {
                 "predicted": predicted_word,
                 "actual_full": actual_text,
+                "raw_target_response": actual_response_raw_content,
                 "actual_k_word": actual_k_word,
                 "correct": is_correct
             }
