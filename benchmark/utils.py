@@ -3,6 +3,7 @@ import json
 import time
 import logging
 from openai import OpenAI, APIError, RateLimitError
+from abc import ABC, abstractmethod
 
 # Configure logging
 logging.basicConfig(
@@ -11,7 +12,13 @@ logging.basicConfig(
 )
 logger = logging.getLogger("IntrospectionBenchmark")
 
-class OpenRouterClient:
+
+class TaskClient(ABC):
+    @abstractmethod
+    def generate(self, messages, item=None, cache_key=None, **kwargs):
+        pass
+
+class OpenRouterClient(TaskClient):
     def __init__(self, model_name="openai/gpt-4o", max_retries=5):
         self.api_key = os.getenv("OPENROUTER_API_KEY")
         # Default to OpenRouter URL if not set, but respect env var
@@ -27,7 +34,7 @@ class OpenRouterClient:
         self.model_name = model_name
         self.max_retries = max_retries
 
-    def generate(self, messages, temperature=0.0, max_tokens=None, item=None, stop=None, response_format=None, logprobs=False, top_logprobs=None):
+    def generate(self, messages, temperature=0.0, max_tokens=None, item=None, cache_key=None, stop=None, response_format=None, logprobs=False, top_logprobs=None):
         """
         Robust generation with retries.
         """
@@ -68,7 +75,7 @@ class OpenRouterClient:
         
         raise Exception(f"Failed to generate after {self.max_retries} retries.")
 
-class CacheClient:
+class CacheClient(TaskClient):
     def __init__(self, cache_file_path):
         self.cache = {}
         self.cache_file_path = cache_file_path
@@ -85,7 +92,7 @@ class CacheClient:
                 if 'id' in item:
                     self.cache[item['id']] = item
     
-    def generate(self, messages, item=None, temperature=0.0, max_tokens=None, stop=None, response_format=None, logprobs=False, top_logprobs=None):
+    def generate(self, messages, item=None, cache_key=None, temperature=0.0, max_tokens=None, stop=None, response_format=None, logprobs=False, top_logprobs=None):
         if item is None:
              raise ValueError("CacheClient requires 'item' to be passed to generate().")
         
@@ -106,8 +113,16 @@ class CacheClient:
         # But generally we want to return what would allow the task to proceed.
         # The tasks usually do `resp.choices[0].message.content`.
         
-        if not isinstance(content, str):
-            content = json.dumps(content) # Serialize back if it was stored as object
+        if isinstance(content, str):
+            if cache_key is not None:
+                raise ValueError("cache_key should be None when cached content is a string.")
+            
+        
+        else:
+            # content = json.dumps(content) # Serialize back if it was stored as object
+            if cache_key is not None:
+                content = content.get(cache_key, content)
+
 
         # Create a mock response object structure
         class MockMessage:
