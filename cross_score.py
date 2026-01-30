@@ -119,7 +119,7 @@ def main():
     
     for target in sorted(results.keys()):
         for obs in sorted(results[target].keys()):
-            row = [target, obs]
+            row = [safe_name, obs]
             scores = []
             for task in sorted_tasks:
                 s = results[target][obs].get(task, "N/A")

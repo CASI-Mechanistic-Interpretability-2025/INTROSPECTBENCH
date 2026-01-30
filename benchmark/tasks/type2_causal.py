@@ -99,6 +99,7 @@ class Task2_2_HeadsUp(TaskBase):
                 resp = self.client_introspection.generate(
                     [{"role": "user", "content": prompt}],
                     response_format={"type": "json_object"},
+                    temperature=0.0,
                     item=item
                 )
                 content = resp.choices[0].message.content
