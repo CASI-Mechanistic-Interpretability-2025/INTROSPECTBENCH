@@ -16,7 +16,7 @@ def calculate_task_score(task_name, data):
         metric_str = "Exact Match k=1"
         
     elif "type1_pred_vs_cot" in task_name:
-        avg_shift = sum(item["diff_shift"] for item in data) / len(data)
+        avg_shift = sum(item["diff_introspection"] for item in data) / len(data)
         score = max(0, 1.0 - avg_shift)
         metric_str = f"1 - AvgShift[{avg_shift:.2f}]"
         

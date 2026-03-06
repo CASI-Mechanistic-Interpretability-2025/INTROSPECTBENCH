@@ -222,7 +222,7 @@ class Task1_4_Paraphrase(TaskBase):
         outputs = []
         for i, p in enumerate(paraphrases):
             try:
-                resp = self.client_target.generate([{"role": "user", "content": p}], max_tokens=50, item=item)
+                resp = self.client_target.generate([{"role": "user", "content": p}], max_tokens=50, item=item, temperature=0.0)
                 text = resp.choices[0].message.content.strip()
                 outputs.append({"text": text, "prompt_idx": i})
             except: pass
@@ -235,8 +235,8 @@ class Task1_4_Paraphrase(TaskBase):
             judge_prompt = f"I generated the following text:\n\"{out['text']}\"\n\nWhich of the following prompts caused me to generate that text?\n\n" + "\n".join([f"{i+1}. {p}" for i, p in enumerate(paraphrases)]) + "\n\nReturn the number of the correct prompt (1, 2, or 3) in a JSON object.\nJSON Example: {{ \"choice\": 1 }}"
             choice = -1
             max_tokens=self.max_tokens
-            if(max_tokens==None or max_tokens>10):
-                max_tokens=10
+            if(max_tokens==None or max_tokens>16):
+                max_tokens=50
             try:
                 resp = self.client_introspection.generate([{"role": "user", "content": judge_prompt}], response_format={"type": "json_object"}, max_tokens=max_tokens, item=item)
                 json_text = resp.choices[0].message.content

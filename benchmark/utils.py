@@ -214,6 +214,22 @@ def extract_json_from_response(response_text):
                     return json.loads(candidate)
                 except:
                     continue
+
+                
+    # For malformed nested json with double braces(hermes)
+    while response_text.startswith('{{') and response_text.endswith('}}'):
+        response_text = response_text[1:-1]
+    
+    try:
+        return json.loads(response_text)
+    except json.JSONDecodeError:
+        # Fallback: find the first '{' and last '}'
+        match = re.search(r'(\{.*\})', response_text, re.DOTALL)
+        if match:
+            try:
+                return json.loads(match.group(1))
+            except:
+                pass
                     
     # Same for []
     bracket_starts = [m.start() for m in re.finditer(r"\[", text)]

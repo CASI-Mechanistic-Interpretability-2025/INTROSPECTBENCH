@@ -11,7 +11,6 @@ TASK_REGISTRY = {
     "type1_kth_word": Task1_1_KthWord,
     "type1_pred_vs_cot": Task1_2_PredVsCoT,
     "type1_self_recognition": Task1_3_SelfRecognition,
-    "type1_stype1_paraphrase": Task1_4_Paraphrase, # Typo in user code? Assuming meant Task1_4
     "type1_paraphrase": Task1_4_Paraphrase,
     "type2_subset": Task2_1_Subset,
     "type2_headsup": Task2_2_HeadsUp,
