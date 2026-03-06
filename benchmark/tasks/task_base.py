@@ -27,6 +27,12 @@ class TaskBase(ABC):
              raise FileNotFoundError(f"Data file not found: {file_path}. Did you run the generation scripts?")
         
         return load_dataset("json", data_files=file_path)["train"]
+    
+    def process_initial_response(self, item, client):
+        """
+        Processes the initial response from the target client.
+        """
+        pass
 
     @abstractmethod
     def run(self, num_threads=1):

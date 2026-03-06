@@ -19,9 +19,11 @@ class Task1_1_KthWord(TaskBase):
             actual_response = self.client_target.generate(
                 messages=[{"role": "user", "content": question}],
                 temperature=0.0,
-                max_tokens=max_tokens
+                max_tokens=max_tokens,
+                item=item
             )
-            actual_text = actual_response.choices[0].message.content.strip()
+            actual_response_raw_content = actual_response.choices[0].message.content
+            actual_text = actual_response_raw_content.strip()
             actual_words = actual_text.split()
         except Exception as e:
             print(f"Error generating actual response: {e}")
@@ -48,7 +50,8 @@ JSON Example: {{ "word": "The" }}"""
                     pred_response = self.client_introspection.generate(
                         messages=[{"role": "user", "content": prompt_pred}],
                         response_format={"type": "json_object"},
-                        max_tokens=max_tokens 
+                        max_tokens=max_tokens,
+                        item=item
                     )
                     
                     data = extract_json_from_response(pred_response.choices[0].message.content)
@@ -66,6 +69,7 @@ JSON Example: {{ "word": "The" }}"""
             item_results["metrics"][f"k={k}"] = {
                 "predicted": predicted_word,
                 "actual_full": actual_text,
+                "raw_target_response": actual_response_raw_content,
                 "actual_k_word": actual_k_word,
                 "correct": is_correct
             }
@@ -107,7 +111,7 @@ class Task1_2_PredVsCoT(TaskBase):
         if(max_tokens==None):
             max_tokens=100
         try:
-            resp = self.client_target.generate([{"role": "user", "content": prompt_direct}], max_tokens=max_tokens)
+            resp = self.client_target.generate([{"role": "user", "content": prompt_direct}], max_tokens=max_tokens, item=item, cache_key="direct_intuition")
             val = extract_prob(resp.choices[0].message.content)
             if val is not None: 
                 p_direct = val
@@ -125,7 +129,7 @@ class Task1_2_PredVsCoT(TaskBase):
         if(max_tokens==None):
             max_tokens=50
         try:
-            resp = self.client_introspection.generate([{"role": "user", "content": prompt_direct_cot}], max_tokens=max_tokens)
+            resp = self.client_introspection.generate([{"role": "user", "content": prompt_direct_cot}], max_tokens=max_tokens, item=item)
             val = extract_prob(resp.choices[0].message.content)
             if val is not None: 
                 p_pred_cot = val
@@ -143,7 +147,7 @@ class Task1_2_PredVsCoT(TaskBase):
         if(max_tokens==None):
             max_tokens=1000
         try:
-            resp = self.client_target.generate([{"role": "user", "content": prompt_cot}], max_tokens=max_tokens)
+            resp = self.client_target.generate([{"role": "user", "content": prompt_cot}], max_tokens=max_tokens, item=item, cache_key="actual_cot")
             content = resp.choices[0].message.content
             cot_content = content
             val = extract_prob(content)
@@ -161,6 +165,7 @@ class Task1_2_PredVsCoT(TaskBase):
             "p_direct": p_direct,
             "p_pred_cot": p_pred_cot,
             "p_actual_cot": p_actual_cot,
+            "raw_target_response": {"direct_intuition": p_direct, "actual_cot": cot_content}, 
             "diff_introspection": abs(p_pred_cot - p_actual_cot),
             "diff_shift": abs(p_direct - p_actual_cot),
             "raw_output_cot": cot_content
@@ -175,18 +180,24 @@ class Task1_2_PredVsCoT(TaskBase):
 class Task1_3_SelfRecognition(TaskBase):
     def process_item(self, item):
         prompt = item['prompt']
-        resp_t0 = self.client_target.generate([{"role": "user", "content": prompt}], temperature=0.0)
+        resp_t0 = self.client_target.generate([{"role": "user", "content": prompt}], temperature=0.0, item=item, cache_key="text_t0")
         text_t0 = resp_t0.choices[0].message.content
-        resp_t1 = self.client_target.generate([{"role": "user", "content": prompt}], temperature=1.0)
+        resp_t1 = self.client_target.generate([{"role": "user", "content": prompt}], temperature=1.0, item=item, cache_key="text_t1")
         text_t1 = resp_t1.choices[0].message.content
         
-        options = [("A", text_t0), ("B", text_t1)]
-        random.shuffle(options)
-        labels = {opt[0]: opt[1] for opt in options}
-        correct_label = "A" if labels["A"] == text_t0 else "B"
+        
+        texts = [text_t0, text_t1]
+        random.shuffle(texts)
+        labels = {"A": texts[0], "B": texts[1]}
+
+        if text_t0 == text_t1:
+            correct_label = random.choice(["A", "B"])
+        else:
+            correct_label = "A" if labels["A"] == text_t0 else "B"
+ 
         
         judge_prompt = f"Prompt: {prompt}\n\nResponse A: {labels['A']}\n\nResponse B: {labels['B']}\n\nWhich of these responses was generated by you with temperature 0.0 (deterministic)? Return 'A' or 'B'."
-        judge_resp = self.client_introspection.generate([{"role": "user", "content": judge_prompt}], max_tokens=5)
+        judge_resp = self.client_introspection.generate([{"role": "user", "content": judge_prompt}], max_tokens=5, item=item)
         choice = judge_resp.choices[0].message.content.strip().upper()
         if "A" in choice: choice = "A"
         elif "B" in choice: choice = "B"
@@ -195,7 +206,8 @@ class Task1_3_SelfRecognition(TaskBase):
             "id": item['id'],
             "chosen": choice,
             "correct": correct_label,
-            "is_correct": choice == correct_label
+            "is_correct": choice == correct_label,
+            "raw_target_response": {"text_t0": text_t0, "text_t1": text_t1}
         })
 
     def run(self, num_threads=1):
@@ -210,7 +222,7 @@ class Task1_4_Paraphrase(TaskBase):
         outputs = []
         for i, p in enumerate(paraphrases):
             try:
-                resp = self.client_target.generate([{"role": "user", "content": p}], max_tokens=50)
+                resp = self.client_target.generate([{"role": "user", "content": p}], max_tokens=50, item=item, temperature=0.0)
                 text = resp.choices[0].message.content.strip()
                 outputs.append({"text": text, "prompt_idx": i})
             except: pass
@@ -223,10 +235,10 @@ class Task1_4_Paraphrase(TaskBase):
             judge_prompt = f"I generated the following text:\n\"{out['text']}\"\n\nWhich of the following prompts caused me to generate that text?\n\n" + "\n".join([f"{i+1}. {p}" for i, p in enumerate(paraphrases)]) + "\n\nReturn the number of the correct prompt (1, 2, or 3) in a JSON object.\nJSON Example: {{ \"choice\": 1 }}"
             choice = -1
             max_tokens=self.max_tokens
-            if(max_tokens==None or max_tokens>10):
-                max_tokens=10
+            if(max_tokens==None or max_tokens>16):
+                max_tokens=50
             try:
-                resp = self.client_introspection.generate([{"role": "user", "content": judge_prompt}], response_format={"type": "json_object"}, max_tokens=max_tokens)
+                resp = self.client_introspection.generate([{"role": "user", "content": judge_prompt}], response_format={"type": "json_object"}, max_tokens=max_tokens, item=item)
                 json_text = resp.choices[0].message.content
                 data = extract_json_from_response(json_text)
                 if data and "choice" in data:

@@ -1,159 +1,172 @@
 import os
 import argparse
 from dotenv import load_dotenv
-from benchmark.utils import OpenRouterClient
-from benchmark.tasks.type1_self_pred import Task1_1_KthWord, Task1_2_PredVsCoT, Task1_4_Paraphrase
+from benchmark.utils import OpenRouterClient, CacheClient
+from benchmark.tasks.type1_self_pred import Task1_1_KthWord, Task1_2_PredVsCoT, Task1_3_SelfRecognition, Task1_4_Paraphrase
 from benchmark.tasks.type2_causal import Task2_1_Subset, Task2_2_HeadsUp, Task2_3_PromptReconstruction
 from benchmark.tasks.type3_state import Task3_1_ProbTargeting
 
-# Load environment variables
-load_dotenv()
+# Map string arg to Class
+TASK_REGISTRY = {
+    "type1_kth_word": Task1_1_KthWord,
+    "type1_pred_vs_cot": Task1_2_PredVsCoT,
+    "type1_self_recognition": Task1_3_SelfRecognition,
+    "type1_paraphrase": Task1_4_Paraphrase,
+    "type2_subset": Task2_1_Subset,
+    "type2_headsup": Task2_2_HeadsUp,
+    "type2_prompt_reconstruction": Task2_3_PromptReconstruction,
+    "type3_prob_targeting": Task3_1_ProbTargeting,
+    "type3_probs": Task3_1_ProbTargeting # Alias
+}
 
-def main():
-    parser = argparse.ArgumentParser(description="Debug Run Introspection Benchmark")
-    parser.add_argument("--model", type=str, default="nvidia/nemotron-nano-9b-v2", help="Model to test (Target)")
-    parser.add_argument("--introspection_model", type=str, default=None, help="Model to use for introspection (Guesser). Defaults to target model if not set.")
-    parser.add_argument("--num_examples", type=int, default=10, help="Number of examples to run per task")
-    parser.add_argument("--threads", type=int, default=1, help="Number of threads for parallel execution")
-    parser.add_argument("--types", type=str, nargs='+', default=["all"], 
-        help="Specific task types to run (default: all)")
-    args = parser.parse_args()
-
+def run_benchmark(args):
+    # Load environment variables
+    load_dotenv()
+    
     api_key = os.getenv("OPENROUTER_API_KEY")
+    base_url = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
+    
     if not api_key:
-        raise ValueError("OPENROUTER_API_KEY not found in .env")
-
+        raise ValueError("OPENROUTER_API_KEY not found in .env file")
+        
     print(f"Initializing OpenRouter client with target model: {args.model}")
-    client = OpenRouterClient(
-        model_name=args.model
-    )
+    client = OpenRouterClient(model_name=args.model)
     
     client_introspection = None
     if args.introspection_model:
-        print(f"Initializing OpenRouter client with introspection model: {args.introspection_model}")
-        client_introspection = OpenRouterClient(
-            model_name=args.introspection_model
-        )
+        if args.introspection_model == args.model:
+             print("Using target model for introspection (Self-Introspection Explicit).")
+             client_introspection = client
+        else:
+             print(f"Initializing OpenRouter client with introspection model: {args.introspection_model}")
+             client_introspection = OpenRouterClient(model_name=args.introspection_model)
     else:
-        print("Using target model for introspection (Self-Introspection).")
+        # Default to self-introspection if not specified
+        print("Using target model for introspection (Self-Introspection Default).")
         client_introspection = client
     
     # Define tasks
-    # Use model-specific output dir
-    # Use model-specific output dir
-    # If cross-model, folder name should reflect both
-    if args.introspection_model:
-        safe_model_name = f"{args.model.replace('/', '_')}_VS_{args.introspection_model.replace('/', '_')}"
+    # Use model-specific output dir based on Cross-Model Plan
+    # {results_dir}/{target}/{observer}
+    
+    results_base = getattr(args, "results_dir", "results_debug")
+    safe_target_name = args.model.replace("/", "_")
+    
+    if args.introspection_model and args.introspection_model != args.model:
+        safe_observer_name = args.introspection_model.replace("/", "_")
+        output_dir = os.path.join(results_base, safe_target_name, safe_observer_name)
     else:
-        safe_model_name = args.model.replace("/", "_")
+        # Self-Introspection
+        output_dir = os.path.join(results_base, safe_target_name, "self_introspection")
         
-    output_dir = os.path.join("results_debug", safe_model_name)
     os.makedirs(output_dir, exist_ok=True)
+    print(f"Saving results to: {output_dir}")
     
-    # Note: Dataset names must match what's expected by load_data in task_base.py
-    # and correspond to files in data/ directory.
+    tasks_to_run = []
     
-    # type2_prompt_reconstruction uses 'type1_open' because it needs open-ended prompts
-    all_tasks = [
-
-        Task1_1_KthWord("type1_kth_word", "debug_repo", "type1_nq", client, client_introspection=client_introspection, output_dir=output_dir),
-        Task1_2_PredVsCoT("type1_pred_vs_cot", "debug_repo", "type1_open", client, client_introspection=client_introspection, output_dir=output_dir),
-        Task1_4_Paraphrase("type1_paraphrase", "debug_repo", "type1_paraphrase", client, client_introspection=client_introspection, output_dir=output_dir),
-        Task2_1_Subset("type2_subset", "debug_repo", "type2_subset", client, client_introspection=client_introspection, output_dir=output_dir),
-        Task2_2_HeadsUp("type2_headsup", "debug_repo", "type2_headsup", client, client_introspection=client_introspection, output_dir=output_dir),
-        Task2_3_PromptReconstruction("type2_prompt_reconstruction", "debug_repo", "type1_open", client, client_introspection=client_introspection, output_dir=output_dir),
-        Task3_1_ProbTargeting("type3_prob_targeting", "debug_repo", "type3_probs", client, client_introspection=client_introspection, output_dir=output_dir)
-    ]
-
-    selected_types = args.types
+    # Handle "all" or specific types
+    selected_types = args.types if args.types else ["all"]
+    if isinstance(selected_types, str): selected_types = [selected_types] # Ensure list
     if "all" in selected_types:
-        tasks = all_tasks
+        standard_tasks = ["type1_kth_word", "type1_pred_vs_cot", "type1_paraphrase", 
+                         "type2_subset", "type2_headsup", "type2_prompt_reconstruction",
+                         "type3_prob_targeting"]
+        for t in standard_tasks:
+            tasks_to_run.append((t, TASK_REGISTRY[t]))
     else:
-        tasks = []
-        for task in all_tasks:
-            # Check if task name starts with any of the selected types
-            if any(task.task_name.startswith(t) for t in selected_types):
-                tasks.append(task)
-    
-    if not tasks:
-        print(f"No tasks found matching types: {selected_types}")
-        return
+        for t_name in selected_types:
+            if t_name in TASK_REGISTRY:
+                tasks_to_run.append((t_name, TASK_REGISTRY[t_name]))
+            elif any(key.startswith(t_name) for key in TASK_REGISTRY.keys()):
+                 for key in TASK_REGISTRY.keys():
+                     if key.startswith(t_name):
+                         tasks_to_run.append((key, TASK_REGISTRY[key]))
+            else:
+                print(f"Warning: Task {t_name} not found in registry.")
 
-    for task in tasks:
-        print(f"\n--- Preparing {task.task_name} ---")
+    # Remove duplicates
+    tasks_to_run = list(set(tasks_to_run))
+
+    for task_name, TaskClass in tasks_to_run:
+        print(f"\n--- Preparing {task_name} ---")
         
-        # Manually slice the dataset to the requested number of examples
-        original_len = len(task.dataset)
-        num_to_run = min(original_len, args.num_examples)
-        task.dataset = task.dataset.select(range(num_to_run))
-        print(f"Sliced dataset from {original_len} to {len(task.dataset)} items.")
+        # Determine Target Client (Cached or Live)
+        target_client_for_task = client
+        if hasattr(args, 'cache_from') and args.cache_from:
+            cache_file = os.path.join(args.cache_from, f"{task_name}.json")
+            if os.path.exists(cache_file):
+                print(f"Using CACHED target responses from: {cache_file}")
+                try:
+                    target_client_for_task = CacheClient(cache_file)
+                except Exception as e:
+                    print(f"Error loading cache: {e}. Falling back to live generation.")
+            else:
+                print(f"Cache file not found at {cache_file}. Using live generation.")
+
+        # Load data
+        if task_name == "type1_kth_word": data_file = "type1_nq.json"
+        elif task_name == "type1_pred_vs_cot": data_file = "type1_open.json"
+        elif task_name == "type1_self_recognition": data_file = "type1_open.json" # Assuming same dataset as open/pred_vs_cot? Let's check logic or default
+        elif task_name == "type1_paraphrase": data_file = "type1_paraphrase.json"
+        elif task_name == "type2_subset": data_file = "type2_subset.json"
+        elif task_name == "type2_headsup": data_file = "type2_headsup.json"
+        elif task_name == "type2_prompt_reconstruction": data_file = "type1_open.json"
+        elif task_name == "type3_prob_targeting": data_file = "type3_probs.json"
+        else: data_file = f"{task_name}.json"
         
+        data_path = os.path.join("data", data_file)
+        
+        # Fallback if file not found (try exact name)
+        if not os.path.exists(data_path):
+             alt_path = os.path.join("data", f"{task_name}.json")
+             if os.path.exists(alt_path):
+                 data_path = alt_path
+        
+        # Task init signature: (task_name, dataset_name, dataset_split, client_target, client_introspection, output_dir)
+        split_name = data_file.replace(".json", "")
+        
+        task_instance = TaskClass(
+            task_name, 
+            "debug_repo", 
+            split_name, 
+            target_client_for_task, 
+            client_introspection, 
+            output_dir
+        )
+
         try:
-            task.run(num_threads=args.threads)
-            print(f"Successfully ran {task.task_name}")
+            if args.num_examples:
+                if hasattr(task_instance, 'dataset'):
+                    original_len = len(task_instance.dataset)
+                    task_instance.dataset = task_instance.dataset.select(range(min(original_len, args.num_examples)))
+                    print(f"Sliced dataset from {original_len} to {len(task_instance.dataset)} items.")
+            
+            task_instance.run(num_threads=args.num_threads)
+            print(f"Successfully ran {task_name}")
         except Exception as e:
-            print(f"FAILED {task.task_name}: {e}")
+            print(f"Error running {task_name}: {e}")
             import traceback
             traceback.print_exc()
 
-    # --- Scoring ---
-    print(f"\n{'='*20} Results Summary for {args.model} {'='*20}")
-    import json
-    import glob
+def main():
+    parser = argparse.ArgumentParser(description="Debug Run Introspection Benchmark")
+    parser.add_argument("--model", type=str, required=True, help="Target model (e.g. nvidia/nemotron-nano-9b-v2)")
+    parser.add_argument("--introspection_model", type=str, default=None, help="Model to use for introspection (Guesser). Defaults to target model if not set.")
+    parser.add_argument("--num_examples", type=int, default=10, help="Number of examples to run per task")
+    parser.add_argument("--threads", type=int, default=1, help="Number of threads for parallel execution")
+    parser.add_argument("--num_threads", type=int, dest="num_threads", help="Alias for --threads") 
+    parser.add_argument("--cache_from", type=str, default=None, help="Directory to load cached target responses from (e.g. results_debug/model/self_introspection)")
+    parser.add_argument("--results_dir", type=str, default="results_debug", help="Directory to save results")
     
-    task_scores = {}
+    parser.add_argument("--types", type=str, nargs='+', default=["all"], 
+        help="Specific task types to run (default: all)")
+        
+    args = parser.parse_args()
     
-    for json_file in glob.glob(os.path.join(output_dir, "*.json")):
-        task_name = os.path.basename(json_file).replace(".json", "")
-        with open(json_file) as f:
-            data = json.load(f)
-            
-        if not data:
-            continue
-            
-        if "type1_kth_word" in task_name:
-            # Accuracy of k=1
-            correct = sum(1 for item in data if item["metrics"].get("k=1", {}).get("correct", False))
-            score = correct / len(data) if data else 0
-            task_scores[task_name] = score
-            print(f"{task_name}: {score:.2%} (Exact Match k=1)")
-            
-        elif "type1_pred_vs_cot" in task_name:
-            # Shift error (lower is better). Score = 1 - avg_shift
-            avg_shift = sum(item["diff_shift"] for item in data) / len(data) if data else 0
-            score = max(0, 1.0 - avg_shift)
-            task_scores[task_name] = score
-            print(f"{task_name}: {score:.2f} (1 - AvgShift[{avg_shift:.2f}])")
-            
-        elif "type1_paraphrase" in task_name:
-            # Accuracy
-            correct = sum(1 for item in data if item.get("is_correct", False))
-            score = correct / len(data) if data else 0
-            task_scores[task_name] = score
-            print(f"{task_name}: {score:.2%} (Accuracy)")
-
-        elif "type2_subset" in task_name or "type2_headsup" in task_name:
-            # Success rate
-            success = sum(1 for item in data if item.get("success", False))
-            score = success / len(data) if data else 0
-            task_scores[task_name] = score
-            print(f"{task_name}: {score:.2%} (Success Rate)")
-            
-        elif "type2_prompt_reconstruction" in task_name:
-            # Semantic Similarity (Avg)
-            avg_sim = sum(item.get("similarity_score", 0.0) for item in data) / len(data) if data else 0
-            task_scores[task_name] = avg_sim
-            print(f"{task_name}: {avg_sim:.4f} (Avg Cos Similarity)")
-            
-        elif "type3_prob_targeting" in task_name:
-            pass
-            
-    if task_scores:
-        final_score = sum(task_scores.values()) / len(task_scores)
-        print(f"\nFinal Aggregated Score: {final_score:.2%} (Average of normalized task scores)")
-    else:
-        print("No scores available.")
-
+    if args.threads and not args.num_threads:
+        args.num_threads = args.threads
+        
+    run_benchmark(args)
 
 if __name__ == "__main__":
     main()

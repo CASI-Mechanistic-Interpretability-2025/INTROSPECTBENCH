@@ -10,3 +10,6 @@ __pycache__/
 # Results
 results/
 results_debug/
+cross_results/
+
+tmp/
